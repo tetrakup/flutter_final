@@ -51,6 +51,26 @@ class WelcomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
+                SizedBox(
+                  width: 10,
+                ),
+                //info butonu ekleme
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/info');
+                  },
+                  child: Row(
+                    children: [
+                      Icon(Icons.info_sharp),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text("Info"),
+                    ],
+                  ),
+                ),
+                //bitis
+
               ],
             ),
           ],

@@ -8,6 +8,7 @@ import 'screens/registerScreen.dart';
 import 'screens/writerScreen.dart';
 import 'screens/welcomeScreen.dart';
 import 'screens/BooksScreen.dart';
+import 'screens/infoScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,7 +32,8 @@ class MyApp extends StatelessWidget {
         '/welcome': (context) => WelcomeScreen(),
         '/writers': (context) => writerScreen(),
         '/anaekran': (context) => BooksScreen(),
-        "/Kategoriler":(context)=> Kategoriler()
+        "/Kategoriler":(context)=> Kategoriler(),
+        "/info": (context) => InfoScreen(),
       },
       initialRoute: '/welcome',
       theme: ThemeData(
