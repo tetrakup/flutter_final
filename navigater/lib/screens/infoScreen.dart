@@ -17,7 +17,7 @@ class _InfoScreenState extends State<InfoScreen> {
 //  String username = "";>controller tanimladigimiz için bunlara gerek kalmadi
   TextEditingController usernameController = TextEditingController();
   String email = "";
-  List<String> interested = [];
+  List<String> interested = ["Mystery"];
 
   List<String> allInterested = [
     "Science Fiction",
@@ -28,17 +28,11 @@ class _InfoScreenState extends State<InfoScreen> {
     "Novel",
     "Non-fiction",
     "Fantasy",
-    "Novel",
     "Action",
-    "Science Fiction",
     "General Fiction",
     "Young Adult Fiction",
     "Thriller",
-    "Mystery",
     "Science Fantasy",
-    "Classics",
-    "Horror",
-    "Non-Fiction",
     "Short Story",
     "Adventure",
     "Humor",
@@ -48,7 +42,6 @@ class _InfoScreenState extends State<InfoScreen> {
     "Spiritual",
     "Historical Fiction",
     "Vampire",
-    "Poetry",
     "Philosophy"
   ];
 
@@ -62,11 +55,6 @@ class _InfoScreenState extends State<InfoScreen> {
     String? userEmail = storage.getString("email");
     List<String>? userInterest = storage.getStringList("interest");
 
-    /*print(isActive);
-    print(userFullname);
-    print(userUsername);
-    print(userEmail);
-    print(userInterest);*/
     if (isActive != null) {
       active = isActive;
     } else {
@@ -103,12 +91,17 @@ class _InfoScreenState extends State<InfoScreen> {
   //hafizaya yaz
   writeStorage() async {
     //asenkron bir işlev kullanabilmek için async. tanimladık.
+
+
+//YENİ EKLENEN ÖZELL. BURADA
+  //  var emailRegex RegExp(r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+   // emailRegex.hasMatch();
     final SharedPreferences storage = await SharedPreferences.getInstance();
 
     storage.setBool("active", active);
     storage.setString("fullname", fullnameController.text);
     storage.setString("username", usernameController.text);
-    storage.setString("email", "value@gmail.com");
+    storage.setString("email", "value@gmail.com");//k.olacak
     storage.setStringList("interest", interested);
 
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -121,7 +114,16 @@ class _InfoScreenState extends State<InfoScreen> {
   //hafizayi sil
   clearStorage() async {
     final SharedPreferences storage = await SharedPreferences.getInstance();
-    storage.clear();
+
+    //hepsini siler
+    //storage.clear();
+
+    //seçili olanı temizler
+    storage.remove("active");
+    storage.remove("fullname");
+    storage.remove("username");
+    storage.remove("email");
+    storage.remove("interest");
 
     usernameController.text = "";
     fullnameController.text = "";
@@ -134,7 +136,24 @@ class _InfoScreenState extends State<InfoScreen> {
 
   List<Widget> buildHobbies() {
     List<Widget> result = [];
-    return [];
+
+    allInterested.forEach((element) {
+      result.add(
+        MyCheckBox(
+          title: element,
+          value: interested.contains(element),
+          onChanged: (value) {
+            if (value == true) {
+              interested.add(element);
+            } else {
+              interested.remove(element);
+            }
+            setState(() {});
+          },
+        ),
+      );
+    });
+    return result;
   }
 
   @override
@@ -166,94 +185,123 @@ class _InfoScreenState extends State<InfoScreen> {
           ),
         ], //AppBar'ın bir özelliği. aksiyon-liste
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(18.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 18.0),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Account Status:"),
-                Switch(
-                    value: active, //en guncel degeri burada tutuyor.
-                    onChanged: (value) {
-                      active = value;
-                      setState(
-                          () {}); //statefull durum degerleri degistirildiginde durumları güncellemek için
-                    }),
-              ],
-            ),
-            //apple switch
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("Account Status:"),
-                CupertinoSwitch(
-                    value: active, //en guncel degeri burada tutuyor.
-                    onChanged: (value) {
-                      active = value;
-                      setState(
-                          () {}); //statefull durum degerleri degistirildiginde durumları güncellemek için
-                    }),
-              ],
-            ), //apple switch bitis
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("Fullname:"),
-                SizedBox(
-                  width: 20,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Account Status:"),
+                    Switch(
+                        value: active, //en guncel degeri burada tutuyor.
+                        onChanged: (value) {
+                          active = value;
+                          setState(
+                              () {}); //statefull durum degerleri degistirildiginde durumları güncellemek için
+                        }),
+                  ],
                 ),
-                Expanded(
-                  child: TextField(
-                    controller: fullnameController,
-                    /*onChanged: (value){
-                    fullname = value;
-                    setState(() {});//statefull durum
-                  },*/
-                  ),
-                ) //metni almak içindir fakat expanded içerisinde olmalıdır.
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("Username:"),
-                SizedBox(
-                  width: 20,
+                //apple switch
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Account Status:"),
+                    CupertinoSwitch(
+                        value: active, //en guncel degeri burada tutuyor.
+                        onChanged: (value) {
+                          active = value;
+                          setState(
+                              () {}); //statefull durum degerleri degistirildiginde durumları güncellemek için
+                        }),
+                  ],
+                ), //apple switch bitis
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Fullname:"),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Expanded(
+                      child: TextField(
+                        controller: fullnameController,
+                        /*onChanged: (value){
+                        fullname = value;
+                        setState(() {});//statefull durum
+                      },*/
+                      ),
+                    ) //metni almak içindir fakat expanded içerisinde olmalıdır.
+                  ],
                 ),
-                Expanded(
-                  child: TextField(
-                    controller: usernameController, //yazi günceleme yöneticisi
-                  ),
-                ) //metni almak içindir fakat expanded içerisinde olmalıdır.
-              ],
-            ),
-            SizedBox(height: 15,),
-            Divider(),
-            SizedBox(height: 15,),
-            Text("hobinizi seçin:"),
-            SizedBox(height: 15,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("Tür:"),
-                SizedBox(
-                  width: 20,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Username:"),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Expanded(
+                      child: TextField(
+                        controller:
+                            usernameController, //yazi günceleme yöneticisi
+                      ),
+                    ) //metni almak içindir fakat expanded içerisinde olmalıdır.
+                  ],
                 ),
-                Switch(
-                  value: true,
-                  onChanged: (value) {},
-                )
+                SizedBox(
+                  height: 15,
+                ),
+                Divider(),
+                SizedBox(
+                  height: 15,
+                ),
+                Text("hobinizi seçin:"),
+                SizedBox(
+                  height: 15,
+                ),
+                ...buildHobbies(),
+                //ElevatedButton( onPressed: readStorage, child: Text("Read"),),
+                //ElevatedButton(onPressed: writeStorage, child: Text("Saved"),),
+                //ElevatedButton(onPressed: clearStorage, child: Text("Clear"),),
               ],
             ),
-            //ElevatedButton( onPressed: readStorage, child: Text("Read"),),
-            //ElevatedButton(onPressed: writeStorage, child: Text("Saved"),),
-            //ElevatedButton(onPressed: clearStorage, child: Text("Clear"),),
-          ],
+          ),
         ),
       ),
+    );
+  }
+}
+
+class MyCheckBox extends StatelessWidget {
+  final String title;
+  final bool value;
+  final Function(bool?)? onChanged;
+
+  const MyCheckBox({
+    super.key,
+    required this.title,
+    required this.value,
+    this.onChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(title),
+        SizedBox(
+          width: 20,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(right: 18.0),
+          child: Checkbox(value: value, onChanged: onChanged),
+        )
+      ],
     );
   }
 }
