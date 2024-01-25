@@ -105,23 +105,31 @@ class _InfoScreenState extends State<InfoScreen> {
     //asenkron bir işlev kullanabilmek için async. tanimladık.
 
 
-//YENİ EKLENEN ÖZELL. BURADA
-  //  var emailRegex RegExp(r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
-   // emailRegex.hasMatch();
-    final SharedPreferences storage = await SharedPreferences.getInstance();
-
-    storage.setBool("active", active);
-    storage.setString("fullname", fullnameController.text);
-    storage.setString("username", usernameController.text);
-    storage.setString("email", emailController.text);// kontrolellerolacak
-    storage.setString("password", passwordController.text);
-    storage.setStringList("interest", interested);
-
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text(
-          "Kayıt Başarılı"), //kayıt butonuna basınca ilgili mesajı veren widget
-      backgroundColor: Colors.deepOrangeAccent,
+     //YENİ EKLENEN ÖZELL. BURADA
+    var emailRegex = RegExp(r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
+    if (emailRegex.hasMatch(emailController.text)) {
+      final SharedPreferences storage = await SharedPreferences.getInstance();
+      
+      storage.setBool("active", active);
+      storage.setString("fullname", fullnameController.text);
+      storage.setString("username", usernameController.text);
+      storage.setString("email", emailController.text);// kontrolellerolacak
+      storage.setString("password", passwordController.text);
+      storage.setStringList("interest", interested);
+      
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Information Saved Successfully"), //kayıt butonuna basınca ilgili mesajı veren widget
+        backgroundColor: Colors.green,
     )); //renk özelliği
+    }
+    else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("Check your email adres"),
+          backgroundColor: Colors.red,
+          ),);
+    }
+
   }
 
   //hafizayi sil

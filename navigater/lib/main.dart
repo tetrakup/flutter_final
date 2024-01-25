@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navigater/screens/Category.dart';
 
+import 'screens/device_screen.dart';
 import 'screens/homeScreen.dart';
 import 'screens/loginScreen.dart';
 import 'screens/profileScreen.dart';
@@ -25,17 +26,20 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       
       routes: {
-        '/home': (context) => HomeScreen(),
-        '/login': (context) => LoginScreen(),
-        '/register': (context) => RegisterScreen(),
-        '/profile': (context) => ProfileScreen(),
-        '/welcome': (context) => WelcomeScreen(),
+        '/home': (context) =>const  HomeScreen(),
+        '/login': (context) =>const  LoginScreen(),
+        '/register': (context) =>const  RegisterScreen(),
+        '/profile': (context) =>const  ProfileScreen(),
+        '/welcome': (context) =>const  WelcomeScreen(),
         '/writers': (context) => writerScreen(),
         '/anaekran': (context) => BooksScreen(),
-        "/Kategoriler":(context)=> Kategoriler(),
-        "/info": (context) => InfoScreen(),
+        "/Kategoriler":(context)=>const  Kategoriler(),
+        "/info": (context) => const InfoScreen(),
+        "/device": (context) => const DeviceScreen(),
+
       },
-      initialRoute: '/welcome',
+      //initialRoute: '/welcome',
+      initialRoute: '/device',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
