@@ -16,7 +16,11 @@ class _InfoScreenState extends State<InfoScreen> {
   TextEditingController fullnameController = TextEditingController();
 //  String username = "";>controller tanimladigimiz için bunlara gerek kalmadi
   TextEditingController usernameController = TextEditingController();
-  String email = "";
+  //String email = "";
+    TextEditingController emailController = TextEditingController();
+  //password ekleecegiz
+    TextEditingController passwordController = TextEditingController();
+
   List<String> interested = ["Mystery"];
 
   List<String> allInterested = [
@@ -53,6 +57,8 @@ class _InfoScreenState extends State<InfoScreen> {
     String? userFullname = storage.getString("fullname");
     String? userUsername = storage.getString("username");
     String? userEmail = storage.getString("email");
+    String? userPassword = storage.getString("password");
+
     List<String>? userInterest = storage.getStringList("interest");
 
     if (isActive != null) {
@@ -74,9 +80,15 @@ class _InfoScreenState extends State<InfoScreen> {
     }
 
     if (userEmail != null) {
-      email = userEmail;
+      emailController = TextEditingController(text: userEmail);
     } else {
-      email = "";
+      emailController = TextEditingController(text: "");
+    }
+
+    if (userPassword != null) {
+      passwordController = TextEditingController(text: userPassword);
+    } else {
+      passwordController = TextEditingController(text: "");
     }
 
     if (userInterest != null) {
@@ -101,7 +113,8 @@ class _InfoScreenState extends State<InfoScreen> {
     storage.setBool("active", active);
     storage.setString("fullname", fullnameController.text);
     storage.setString("username", usernameController.text);
-    storage.setString("email", "value@gmail.com");//k.olacak
+    storage.setString("email", emailController.text);// kontrolellerolacak
+    storage.setString("password", passwordController.text);
     storage.setStringList("interest", interested);
 
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -123,12 +136,14 @@ class _InfoScreenState extends State<InfoScreen> {
     storage.remove("fullname");
     storage.remove("username");
     storage.remove("email");
+    storage.remove("password");
     storage.remove("interest");
 
     usernameController.text = "";
     fullnameController.text = "";
     active = false;
-    email = "";
+    emailController.text = "";
+    passwordController.text = "";
     interested = [];
 
     setState(() {});
@@ -166,7 +181,7 @@ class _InfoScreenState extends State<InfoScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Storage"),
+        title: const Text("REGISTER"),
         actions: [
           InkWell(
             onTap: clearStorage,
@@ -252,6 +267,38 @@ class _InfoScreenState extends State<InfoScreen> {
                     ) //metni almak içindir fakat expanded içerisinde olmalıdır.
                   ],
                 ),
+                //mail
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Email:"),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Expanded(
+                      child: TextField(
+                        controller:
+                            emailController, //yazi günceleme yöneticisi
+                      ),
+                    ) //metni almak içindir fakat expanded içerisinde olmalıdır.
+                  ],
+                ),//mail bitis
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Password:"),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Expanded(
+                      child: TextField(
+                        controller:
+                            passwordController, //yazi günceleme yöneticisi
+                      ),
+                    ) //metni almak içindir fakat expanded içerisinde olmalıdır.
+                  ],
+                ),
+                
                 SizedBox(
                   height: 15,
                 ),

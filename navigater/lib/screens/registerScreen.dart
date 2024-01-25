@@ -74,7 +74,7 @@ class RegisterScreen extends StatelessWidget {
               ),
               SizedBox(height:20,),*/
               //deneme
-              Row(
+              Row( //register'a tıkladıgımızda home'a yönlendiriyor
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
