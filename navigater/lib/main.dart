@@ -21,8 +21,12 @@ class MyApp extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+    print(ThemeMode.system);
     return MaterialApp(
       title: 'Flutter Demo',
+      themeMode: ThemeMode.dark,
+      //theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
       
       routes: {

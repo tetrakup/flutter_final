@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart'; //cupertinoswtich için kütüphane
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:shared_preferences/shared_preferences.dart'; //hafizayi okuma fonk. için kütüphane
+import 'package:flutter/foundation.dart' show Platform; //Flutter'ın hng plotformda olduğumuzu göstermek için yazd. bir kütüphane
 
 class InfoScreen extends StatefulWidget {
   const InfoScreen({super.key});
@@ -18,11 +19,11 @@ class _InfoScreenState extends State<InfoScreen> {
 //  String username = "";>controller tanimladigimiz için bunlara gerek kalmadi
   TextEditingController usernameController = TextEditingController();
   //String email = "";
-    TextEditingController emailController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   //password ekleecegiz
-    TextEditingController passwordController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
-  List<String> interested = ["Mystery"];
+  List<String> interested = [];
 
   List<String> allInterested = [
     "Science Fiction",
@@ -50,6 +51,12 @@ class _InfoScreenState extends State<InfoScreen> {
     "Philosophy"
   ];
 
+//storeData ekleme denemesi
+  // storeData() async {
+  //       final SharedPreferences storage = await SharedPreferences.getInstance();
+
+  //       storage.  }
+
   //hafizayi oku
   readStorage() async {
     //async:fonksiyonu asenkron hale getirir. (storage:hafizada)
@@ -62,99 +69,180 @@ class _InfoScreenState extends State<InfoScreen> {
 
     List<String>? userInterest = storage.getStringList("interest");
 
-    if (isActive != null) {
-      active = isActive;
-    } else {
-      active = false;
-    }
+    setState(() {
+      // if (isActive != null) {
+      //   active = isActive;
+      // } else {
+      //   active = false;
+      // }
+      active = (isActive != null) ? isActive : false;
 
-    if (userFullname != null) {
-      fullnameController = TextEditingController(text: userFullname);
-    } else {
-      fullnameController = TextEditingController(text: "");
-    }
+      // if (userFullname != null) {
+      //   fullnameController = TextEditingController(text: userFullname);
+      // } else {
+      //   fullnameController = TextEditingController(text: "");
+      // }
+      fullnameController = TextEditingController(text: userFullname ?? "");
 
-    if (userUsername != null) {
-      usernameController = TextEditingController(text: userUsername);
-    } else {
-      usernameController = TextEditingController(text: "");
-    }
+      // if (userUsername != null) {
+      //   usernameController = TextEditingController(text: userUsername);
+      // } else {
+      //   usernameController = TextEditingController(text: "");
+      // }
+      usernameController = TextEditingController(text: userUsername ?? "");
 
-    if (userEmail != null) {
-      emailController = TextEditingController(text: userEmail);
-    } else {
-      emailController = TextEditingController(text: "");
-    }
+      // if (userEmail != null) {
+      //   emailController = TextEditingController(text: userEmail);
+      // } else {
+      //   emailController = TextEditingController(text: "");
+      // }
+      emailController = TextEditingController(text: userEmail ?? "");
 
-    if (userPassword != null) {
-      passwordController = TextEditingController(text: userPassword);
-    } else {
-      passwordController = TextEditingController(text: "");
-    }
+      // if (userPassword != null) {
+      //   passwordController = TextEditingController(text: userPassword);
+      // } else {
+      //   passwordController = TextEditingController(text: "");
+      // }
+      passwordController = TextEditingController(text: userPassword ?? "");
 
-    if (userInterest != null) {
-      interested = userInterest;
-    } else {
-      interested = [];
-    }
-
-    setState(() {}); // durum güncelledigimizde setstate kull.
+      // if (userInterest != null) {
+      //   interested = userInterest;
+      // } else {
+      //   interested = [];
+      // }
+      interested = (userInterest != null) ? userInterest : [];
+    }); // durum güncelledigimizde setstate kull.
   }
 
   //hafizaya yaz
   writeStorage() async {
     //asenkron bir işlev kullanabilmek için async. tanimladık.
 
-
-     //YENİ EKLENEN ÖZELL. BURADA
-    var emailRegex = RegExp(r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
+    //YENİ EKLENEN ÖZELL. BURADA
+    var emailRegex = RegExp(
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
     if (emailRegex.hasMatch(emailController.text)) {
       final SharedPreferences storage = await SharedPreferences.getInstance();
-      
+
       storage.setBool("active", active);
       storage.setString("fullname", fullnameController.text);
       storage.setString("username", usernameController.text);
-      storage.setString("email", emailController.text);// kontrolellerolacak
+      storage.setString("email", emailController.text); // kontrolellerolacak
       storage.setString("password", passwordController.text);
       storage.setStringList("interest", interested);
-      
+
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("Information Saved Successfully"), //kayıt butonuna basınca ilgili mesajı veren widget
+        content: Text(
+            "Information Saved Successfully"), //kayıt butonuna basınca ilgili mesajı veren widget
         backgroundColor: Colors.green,
-    )); //renk özelliği
-    }
-    else {
+        behavior: SnackBarBehavior.floating,
+      )); //renk özelliği
+    } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text("Check your email adres"),
           backgroundColor: Colors.red,
-          ),);
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
     }
+  }
 
+  //silme işlem arayüzü için cihazı kontrol et
+  clearData() {
+
+  }
+  //IOS ıcın hafızayı sil
+  clearStorageIOS() async {
+    showCupertinoDialog(
+      context: context,
+      barrierDismissible:
+          false, //buton dışında herhangi bi yere tıklanınca kapansın mı kapanmasın mı?
+      builder: (context) => CupertinoAlertDialog(
+        //dataları silmeden önce sorması için
+        title: Row(
+          children: [
+            Icon(Icons.warning),
+            Gap(12.0),
+            Text("Confirmation"),
+          ],
+        ),
+        content: Text("Are you sure you want to clear all the data?"),
+        actions: [
+          CupertinoDialogAction(
+            onPressed: () async {
+              final SharedPreferences storage =
+                  await SharedPreferences.getInstance();
+              //seçili olanı temizler
+              storage.remove("active");
+              storage.remove("fullname");
+              storage.remove("username");
+              storage.remove("email");
+              storage.remove("password");
+              storage.remove("interest");
+              usernameController.text = "";
+              fullnameController.text = "";
+              active = false;
+              emailController.text = "";
+              passwordController.text = "";
+              interested = [];
+            },
+            child: Text("Yes"),
+            isDestructiveAction: true,
+          ),
+          CupertinoDialogAction(
+            onPressed: () => Navigator.of(context).pop(),
+            child: Text("No"),
+          ),
+        ],
+      ),
+    ); //show dialog bitis
+    setState(() {});
   }
 
   //hafizayi sil
-  clearStorage() async {
-    final SharedPreferences storage = await SharedPreferences.getInstance();
-
+  clearStorageAndroid() async {
+    showDialog(
+      context: context,
+      barrierDismissible:
+          false, //buton dışında herhangi bi yere tıklanınca kapansın mı kapanmasın mı?
+      builder: (context) => AlertDialog(
+        //dataları silmeden önce sorması için
+        title: Row(
+          children: [
+            Icon(Icons.warning),
+            Gap(12.0),
+            Text("Confirmation"),
+          ],
+        ),
+        content: Text("Are you sure you want to clear all the data?"),
+        actions: [
+          ElevatedButton(
+              onPressed: () async {
+                final SharedPreferences storage =
+                    await SharedPreferences.getInstance();
+                //seçili olanı temizler
+                storage.remove("active");
+                storage.remove("fullname");
+                storage.remove("username");
+                storage.remove("email");
+                storage.remove("password");
+                storage.remove("interest");
+                usernameController.text = "";
+                fullnameController.text = "";
+                active = false;
+                emailController.text = "";
+                passwordController.text = "";
+                interested = [];
+              },
+              child: Text("Yes")),
+          ElevatedButton(
+              onPressed: () => Navigator.of(context).pop(), child: Text("No")),
+        ],
+      ),
+    ); //show dialog bitis
     //hepsini siler
     //storage.clear();
-
-    //seçili olanı temizler
-    storage.remove("active");
-    storage.remove("fullname");
-    storage.remove("username");
-    storage.remove("email");
-    storage.remove("password");
-    storage.remove("interest");
-
-    usernameController.text = "";
-    fullnameController.text = "";
-    active = false;
-    emailController.text = "";
-    passwordController.text = "";
-    interested = [];
-
     setState(() {});
   }
 
@@ -165,7 +253,8 @@ class _InfoScreenState extends State<InfoScreen> {
       result.add(
         MyCheckBox(
           title: element,
-          value: interested.contains(element),
+          value: interested
+              .contains(element), //contains:içeriyor mu diye kontrol eder
           onChanged: (value) {
             if (value == true) {
               interested.add(element);
@@ -182,6 +271,7 @@ class _InfoScreenState extends State<InfoScreen> {
 
   @override
   void initState() {
+    //guncellemeleri kendi getirir herhangib ir butona basmamız gerekmez.
     readStorage();
     super.initState();
   }
@@ -193,7 +283,7 @@ class _InfoScreenState extends State<InfoScreen> {
         title: const Text("REGISTER"),
         actions: [
           InkWell(
-            onTap: clearStorage,
+            onTap: clearStorageAndroid,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Icon(Icons.delete),
@@ -229,7 +319,8 @@ class _InfoScreenState extends State<InfoScreen> {
                         }),
                   ],
                 ),
-                Row(//apple switch
+                Row(
+                  //apple switch
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("Account Status:"),
@@ -273,20 +364,22 @@ class _InfoScreenState extends State<InfoScreen> {
                     ) //metni almak içindir fakat expanded içerisinde olmalıdır.
                   ],
                 ),
-                Row(//mail
+                Row(
+                  //mail
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("Email:"),
-                    SizedBox(width: 20,),
+                    SizedBox(
+                      width: 20,
+                    ),
                     Gap(20),
                     Expanded(
                       child: TextField(
-                        controller:
-                            emailController, //yazi günceleme yöneticisi
+                        controller: emailController, //yazi günceleme yöneticisi
                       ),
                     ) //metni almak içindir fakat expanded içerisinde olmalıdır.
                   ],
-                ),//mail bitis
+                ), //mail bitis
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -312,7 +405,7 @@ class _InfoScreenState extends State<InfoScreen> {
                 SizedBox(
                   height: 15,
                 ),
-                ...buildHobbies(),
+                ...buildHobbies(), //üç nokta köşeliparantezi görmezden gelir.
                 //ElevatedButton( onPressed: readStorage, child: Text("Read"),),
                 //ElevatedButton(onPressed: writeStorage, child: Text("Saved"),),
                 //ElevatedButton(onPressed: clearStorage, child: Text("Clear"),),
