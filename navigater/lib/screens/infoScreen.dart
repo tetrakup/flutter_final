@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart'; //cupertinoswtich için kütüphane
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:shared_preferences/shared_preferences.dart'; //hafizayi okuma fonk. için kütüphane
-import 'package:flutter/foundation.dart' show Platform; //Flutter'ın hng plotformda olduğumuzu göstermek için yazd. bir kütüphane
+import 'dart:io' show Platform; //Flutter'ın hng plotformda olduğumuzu göstermek için yazd. bir kütüphane
 
 class InfoScreen extends StatefulWidget {
   const InfoScreen({super.key});
@@ -151,7 +152,18 @@ class _InfoScreenState extends State<InfoScreen> {
   //silme işlem arayüzü için cihazı kontrol et
   clearData() {
 
-  }
+    if(kIsWeb){
+      clearStorageIOS();
+    }
+    else{
+      if(
+      Platform.isIOS || Platform.isMacOS){
+       clearStorageIOS();}
+    else{
+      clearStorageMaterial();
+    }
+    }
+    }
   //IOS ıcın hafızayı sil
   clearStorageIOS() async {
     showCupertinoDialog(
@@ -201,7 +213,7 @@ class _InfoScreenState extends State<InfoScreen> {
   }
 
   //hafizayi sil
-  clearStorageAndroid() async {
+  clearStorageMaterial() async {
     showDialog(
       context: context,
       barrierDismissible:
@@ -283,7 +295,7 @@ class _InfoScreenState extends State<InfoScreen> {
         title: const Text("REGISTER"),
         actions: [
           InkWell(
-            onTap: clearStorageAndroid,
+            onTap: clearStorageMaterial,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Icon(Icons.delete),
