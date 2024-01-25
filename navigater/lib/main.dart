@@ -38,8 +38,8 @@ class MyApp extends StatelessWidget {
         "/device": (context) => const DeviceScreen(),
 
       },
-      //initialRoute: '/welcome',
-      initialRoute: '/device',
+      initialRoute: '/welcome',
+      //initialRoute: '/device',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,

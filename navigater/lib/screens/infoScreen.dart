@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart'; //cupertinoswtich için kütüphane
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:shared_preferences/shared_preferences.dart'; //hafizayi okuma fonk. için kütüphane
 
 class InfoScreen extends StatefulWidget {
@@ -228,8 +229,7 @@ class _InfoScreenState extends State<InfoScreen> {
                         }),
                   ],
                 ),
-                //apple switch
-                Row(
+                Row(//apple switch
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("Account Status:"),
@@ -246,9 +246,8 @@ class _InfoScreenState extends State<InfoScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("Fullname:"),
-                    SizedBox(
-                      width: 20,
-                    ),
+                    Gap(20),
+                    //SizedBox(width: 20,),
                     Expanded(
                       child: TextField(
                         controller: fullnameController,
@@ -264,9 +263,8 @@ class _InfoScreenState extends State<InfoScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("Username:"),
-                    SizedBox(
-                      width: 20,
-                    ),
+                    Gap(20),
+                    //SizedBox(width: 20,),
                     Expanded(
                       child: TextField(
                         controller:
@@ -275,14 +273,12 @@ class _InfoScreenState extends State<InfoScreen> {
                     ) //metni almak içindir fakat expanded içerisinde olmalıdır.
                   ],
                 ),
-                //mail
-                Row(
+                Row(//mail
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("Email:"),
-                    SizedBox(
-                      width: 20,
-                    ),
+                    SizedBox(width: 20,),
+                    Gap(20),
                     Expanded(
                       child: TextField(
                         controller:
@@ -295,9 +291,8 @@ class _InfoScreenState extends State<InfoScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("Password:"),
-                    SizedBox(
-                      width: 20,
-                    ),
+                    Gap(20),
+                    //SizedBox(width: 20,),
                     Expanded(
                       child: TextField(
                         controller:
@@ -306,7 +301,6 @@ class _InfoScreenState extends State<InfoScreen> {
                     ) //metni almak içindir fakat expanded içerisinde olmalıdır.
                   ],
                 ),
-                
                 SizedBox(
                   height: 15,
                 ),
@@ -314,7 +308,7 @@ class _InfoScreenState extends State<InfoScreen> {
                 SizedBox(
                   height: 15,
                 ),
-                Text("hobinizi seçin:"),
+                Text("Select Your Interest"),
                 SizedBox(
                   height: 15,
                 ),
