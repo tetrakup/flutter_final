@@ -42,6 +42,7 @@ class MyApp extends StatelessWidget {
         "/device": (context) => const DeviceScreen(),
 
       },
+      
       initialRoute: '/welcome',
       //initialRoute: '/device',
       theme: ThemeData(
