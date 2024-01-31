@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navigater/screens/Category.dart';
+import 'package:navigater/screens/loading.dart';
 
 import 'screens/device_screen.dart';
 import 'screens/homeScreen.dart';
@@ -11,6 +12,7 @@ import 'screens/users_screen.dart';
 import 'screens/writerScreen.dart';
 import 'screens/welcomeScreen.dart';
 import 'screens/booksScreen.dart';
+import 'screens/loading.dart';
 
 void main() {
   runApp(const MyApp());
@@ -42,6 +44,8 @@ class MyApp extends StatelessWidget {
         "/device": (context) => const DeviceScreen(),
         "/users":(context) => const UsersScreen(),
         "/devices":(context) => const DeviceScreen(),
+        "/loading":(context) => const LoadingScreen(),
+
 
       },
       
