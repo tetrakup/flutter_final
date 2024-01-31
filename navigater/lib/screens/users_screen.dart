@@ -16,14 +16,15 @@ class UsersScreen extends StatefulWidget {
 class _UsersScreenState extends State<UsersScreen> {
   bool loading = false;
   int currentPage = 1; //hng. sayfadayım?
-  int totalPages = 1; //kaç sayfam var?
+  int totalPages = 5; //kaç sayfam var?
   List<dynamic> users = [
     //kullanıcıları buraya yerlestırcz
   ];
 
-  showError() {
+  //show error baslangic
+  /*showError() {
     showCupertinoDialog(
-      context: context,
+      context:context,
       barrierDismissible:
           true, //buton dışında herhangi bi yere tıklanınca kapansın mı kapanmasın mı?
       builder: (context) => CupertinoAlertDialog(
@@ -43,18 +44,45 @@ class _UsersScreenState extends State<UsersScreen> {
         ],
       ),
     );
+  }*/ //showerror sonu
+  showError(BuildContext context) {
+    showCupertinoDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (context) => CupertinoAlertDialog(
+        title: Row(
+          children: [
+            Icon(Icons.warning),
+            Gap(12.0),
+            Text("Error"),
+          ],
+        ),
+        content: Text("Check your internet connection and try again"),
+        actions: [
+          CupertinoDialogAction(
+            onPressed: () => Navigator.of(context).pop(),
+            child: Text("Ok"),
+          ),
+        ],
+      ),
+    );
   }
 
-  loadUsers() async {
+  //----------------------------------------------------------------
+ /* loadUsers({int page = 1}) async {
+    if (currentPage < 1 || currentPage > totalPages) {
+      //eğer 1den küçük ve total sayfa sayısından büyükse
+      return;
+    }
     setState(() {
       loading = true;
     });
 
     API api = API();
-    var result = await api.getUsers();
+    var result = await api.getUsers(page: page);
 
     if (result is Exception) {
-      showError();
+      showError(context as BuildContext);
       setState(() {
         loading = false;
       });
@@ -67,7 +95,32 @@ class _UsersScreenState extends State<UsersScreen> {
         loading = false;
       });
     }
+  }*/
+  loadUsers({int page = 1}) async {
+  if (currentPage < 1 || currentPage > totalPages) {
+    return;
   }
+  setState(() {
+    loading = true;
+  });
+
+  API api = API();
+  var result = await api.getUsers(page: page);
+
+  if (result is Exception) {
+    showError(context as BuildContext); // Burada showError fonksiyonuna BuildContext parametresi geçiyoruz
+    setState(() {
+      loading = false;
+    });
+  } else {
+    setState(() {
+      currentPage = result["page"];
+      totalPages = result["total_pages"];
+      users = result["data"];
+      loading = false;
+    });
+  }
+}
 
   List<Widget> drawUsers() {
     List<Widget> r = [];
@@ -77,22 +130,33 @@ class _UsersScreenState extends State<UsersScreen> {
         UserTile(element: element),
       );
     }
-  
-  return r;
+
+    return r;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Users')),
+      appBar: AppBar(
+        title: GestureDetector(
+          onTap: () {
+            // Burada başka bir sayfaya yönlendirme yapabilirsiniz
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => UsersScreen()),
+            );
+          },
+          child: Text('Click to return to Register'),
+        ),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
               if (loading) LinearProgressIndicator(),
-              ...drawUsers(),
+            if(!loading)...drawUsers(),
               Container(
-                margin:EdgeInsets.all(12.0),
+                margin: EdgeInsets.all(12.0),
                 padding: EdgeInsets.all(12.0),
                 decoration: BoxDecoration(
                   color: Colors.grey.shade100,
@@ -102,13 +166,23 @@ class _UsersScreenState extends State<UsersScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     InkWell(
-                      onTap: () {},
-                      child: Icon(Icons.arrow_left_sharp),
+                      onTap: () => loadUsers(page: currentPage - 1),
+                      child: Icon(
+                        Icons.arrow_left_sharp,
+                        color: currentPage == 1
+                            ? Colors.grey.shade300
+                            : Colors.black,
+                      ),
                     ),
                     Text("$currentPage/$totalPages"),
                     InkWell(
-                      onTap: () {},
-                      child: Icon(Icons.arrow_right_sharp),
+                      onTap: () => loadUsers(page: currentPage + 1),
+                      child: Icon(
+                        Icons.arrow_right_sharp,
+                        color: currentPage == totalPages
+                            ? Colors.grey.shade300
+                            : Colors.black,
+                      ),
                     ),
                   ],
                 ),

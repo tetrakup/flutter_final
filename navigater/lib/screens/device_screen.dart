@@ -14,7 +14,6 @@ class _DeviceScreenState extends State<DeviceScreen> {
   String data = "";
 
   getDeviceInfo() async {
-
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
 
     if (kIsWeb) {
@@ -22,7 +21,6 @@ class _DeviceScreenState extends State<DeviceScreen> {
       platform = "web";
       WebBrowserInfo webBrowserInfo = await deviceInfo.webBrowserInfo;
       data = webBrowserInfo.toString();
-
     } else {
       if (defaultTargetPlatform == TargetPlatform.android) {
         platform = "android";
@@ -47,9 +45,8 @@ class _DeviceScreenState extends State<DeviceScreen> {
       } else {
         platform = "unknown";
       }
-      }
-      setState(() {});
-    
+    }
+    setState(() {});
   }
 
   @override
@@ -64,14 +61,18 @@ class _DeviceScreenState extends State<DeviceScreen> {
       appBar: AppBar(
         title: Text("Device Info"),
         actions: [
-          InkWell(onTap:() => Navigator.of(context).pushNamed("/info") , child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Icon(Icons.person),
-          ),),
-        ],//() => Navigator.of(context).pushNamed("/info")
+          InkWell(
+            onTap: () => Navigator.of(context).pushNamed("/welcome"),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Icon(Icons.home),
+            ),
+          ),
+        ], //() => Navigator.of(context).pushNamed("/info")
       ),
       body: SafeArea(
-        child: SingleChildScrollView(child: Column(
+        child: SingleChildScrollView(
+            child: Column(
           children: [
             Text("Platform: $platform"),
             Text(data),

@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 //islemi dene/sunucuya baglan/kullanıcıları al/gelen cevapları kontrol et/hata yoksa geri ver:bunlar zaman alıcı ve bazen gözden kaçabilen işlemler old. için try catch yapacagız:
 
@@ -43,6 +41,33 @@ class API {
     // catch (e) {//hata e'de tutulur ve hata verd. burayi calistir
     // }
   }
-  createUser(){}
+  //createUser(){}
 }
+
+loginUser({required String username, required String password})async{//page1=1.sayfadan baslar
+    try {
+      
+      final String url = "base_url/login";
+
+      final parameters = {
+         "email": username,
+         "password": password,
+         };
+      
+      final response = await dio.post(url,
+      data: FormData.fromMap(parameters),
+      //options: Options(contentType: Headers.formUrlEncodedContentType,),//api formatı farklı olsaydı bunu uyarlamak için (x-www-form-urlencoded)
+      ); //sonucu response'a ata.
+      
+      return response.data;//aldıı dataları response.data içerisine at
+    }
+    catch (e) {//hata verdiyse e'ye ata.
+    
+    return e;
+    }
+    // } finally {}(try veya catch olsa bile)nihayet bununla sonlandır.
+   
+  }
 }
+
+

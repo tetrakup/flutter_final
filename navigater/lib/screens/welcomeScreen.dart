@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -54,23 +55,23 @@ class WelcomeScreen extends StatelessWidget {
                 SizedBox(
                   width: 10,
                 ),
-                //info butonu ekleme
+                Gap(20),
+                //device ekleme
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/info');
+                    Navigator.pushNamed(context, '/devices');
                   },
                   child: Row(
                     children: [
-                      Icon(Icons.info_sharp),
+                      Icon(Icons.device_hub),
                       SizedBox(
                         width: 10,
                       ),
-                      Text("Info"),
+                      Text("System Inf"),
                     ],
                   ),
                 ),
-                //bitis
-
+                //device bitis
               ],
             ),
           ],

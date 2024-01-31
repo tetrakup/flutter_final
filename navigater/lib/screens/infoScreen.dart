@@ -1,9 +1,11 @@
-import 'package:flutter/cupertino.dart'; //cupertinoswtich için kütüphane
+/*import 'package:flutter/cupertino.dart'; //cupertinoswtich için kütüphane
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:shared_preferences/shared_preferences.dart'; //hafizayi okuma fonk. için kütüphane
-import 'dart:io' show Platform; //Flutter'ın hng plotformda olduğumuzu göstermek için yazd. bir kütüphane
+import 'dart:io'
+    show
+        Platform; //Flutter'ın hng plotformda olduğumuzu göstermek için yazd. bir kütüphane
 
 class InfoScreen extends StatefulWidget {
   const InfoScreen({super.key});
@@ -132,13 +134,22 @@ class _InfoScreenState extends State<InfoScreen> {
       storage.setString("password", passwordController.text);
       storage.setStringList("interest", interested);
 
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
         content: Text(
             "Information Saved Successfully"), //kayıt butonuna basınca ilgili mesajı veren widget
         backgroundColor: Colors.green,
         behavior: SnackBarBehavior.floating,
+        action: SnackBarAction(
+          label: 'Go to Home', // Butonun üzerinde görünecek metin
+          onPressed: () {
+            Navigator.pushNamedAndRemoveUntil(
+                context, "/home", (Route<dynamic> route) => false);
+          },
+        ),
       )); //renk özelliği
-    } else {
+    }
+     else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text("Check your email adres"),
@@ -151,19 +162,17 @@ class _InfoScreenState extends State<InfoScreen> {
 
   //silme işlem arayüzü için cihazı kontrol et
   clearData() {
-
-    if(kIsWeb){
+    if (kIsWeb) {
       clearStorageIOS();
+    } else {
+      if (Platform.isIOS || Platform.isMacOS) {
+        clearStorageIOS();
+      } else {
+        clearStorageMaterial();
+      }
     }
-    else{
-      if(
-      Platform.isIOS || Platform.isMacOS){
-       clearStorageIOS();}
-    else{
-      clearStorageMaterial();
-    }
-    }
-    }
+  }
+
   //IOS ıcın hafızayı sil
   clearStorageIOS() async {
     showCupertinoDialog(
@@ -174,7 +183,10 @@ class _InfoScreenState extends State<InfoScreen> {
         //dataları silmeden önce sorması için
         title: Row(
           children: [
-            Icon(Icons.warning),
+            Icon(
+              Icons.warning,
+              color: Colors.teal.shade200,
+            ),
             Gap(12.0),
             Text("Confirmation"),
           ],
@@ -301,6 +313,7 @@ class _InfoScreenState extends State<InfoScreen> {
               child: Icon(Icons.delete),
             ),
           ),
+          Gap(3),
           InkWell(
             //tiklandiginda writestoage fonk. calistiran buton haline geldi
             onTap: writeStorage,
@@ -309,6 +322,16 @@ class _InfoScreenState extends State<InfoScreen> {
               child: Icon(Icons.save),
             ),
           ),
+          //usersscren ekleme
+          Gap(3),
+          InkWell(
+            onTap: () => Navigator.of(context).pushNamed("/users"),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Icon(Icons.person),
+            ),
+          ),
+          //usersscreen bitis
         ], //AppBar'ın bir özelliği. aksiyon-liste
       ),
       body: SafeArea(
@@ -318,93 +341,141 @@ class _InfoScreenState extends State<InfoScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Account Status:"),
-                    Switch(
-                        value: active, //en guncel degeri burada tutuyor.
-                        onChanged: (value) {
-                          active = value;
-                          setState(
-                              () {}); //statefull durum degerleri degistirildiginde durumları güncellemek için
-                        }),
-                  ],
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+                  decoration: BoxDecoration(
+                    color: Colors.teal.shade200,
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Account Status:"),
+                      Switch(
+                          value: active, //en guncel degeri burada tutuyor.
+                          onChanged: (value) {
+                            active = value;
+                            setState(
+                                () {}); //statefull durum degerleri degistirildiginde durumları güncellemek için
+                          }),
+                    ],
+                  ),
                 ),
-                Row(
-                  //apple switch
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Account Status:"),
-                    CupertinoSwitch(
-                        value: active, //en guncel degeri burada tutuyor.
-                        onChanged: (value) {
-                          active = value;
-                          setState(
-                              () {}); //statefull durum degerleri degistirildiginde durumları güncellemek için
-                        }),
-                  ],
+                Gap(8),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+                  decoration: BoxDecoration(
+                    color: Colors.teal.shade200,
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: Row(
+                    //apple switch
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Account Status:"),
+                      CupertinoSwitch(
+                          value: active, //en guncel degeri burada tutuyor.
+                          onChanged: (value) {
+                            active = value;
+                            setState(
+                                () {}); //statefull durum degerleri degistirildiginde durumları güncellemek için
+                          }),
+                    ],
+                  ),
                 ), //apple switch bitis
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Fullname:"),
-                    Gap(20),
-                    //SizedBox(width: 20,),
-                    Expanded(
-                      child: TextField(
-                        controller: fullnameController,
-                        /*onChanged: (value){
-                        fullname = value;
-                        setState(() {});//statefull durum
-                      },*/
-                      ),
-                    ) //metni almak içindir fakat expanded içerisinde olmalıdır.
-                  ],
+                Gap(8),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+                  decoration: BoxDecoration(
+                    color: Colors.teal.shade200,
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Fullname:"),
+                      Gap(20),
+                      //SizedBox(width: 20,),
+                      Expanded(
+                        child: TextField(
+                          controller: fullnameController,
+                          /*onChanged: (value){
+                          fullname = value;
+                          setState(() {});//statefull durum
+                        },*/
+                        ),
+                      ) //metni almak içindir fakat expanded içerisinde olmalıdır.
+                    ],
+                  ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Username:"),
-                    Gap(20),
-                    //SizedBox(width: 20,),
-                    Expanded(
-                      child: TextField(
-                        controller:
-                            usernameController, //yazi günceleme yöneticisi
-                      ),
-                    ) //metni almak içindir fakat expanded içerisinde olmalıdır.
-                  ],
+                Gap(8),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+                  decoration: BoxDecoration(
+                    color: Colors.teal.shade200,
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Username:"),
+                      Gap(20),
+                      //SizedBox(width: 20,),
+                      Expanded(
+                        child: TextField(
+                          controller:
+                              usernameController, //yazi günceleme yöneticisi
+                        ),
+                      ) //metni almak içindir fakat expanded içerisinde olmalıdır.
+                    ],
+                  ),
                 ),
-                Row(
-                  //mail
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Email:"),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Gap(20),
-                    Expanded(
-                      child: TextField(
-                        controller: emailController, //yazi günceleme yöneticisi
+                Gap(8),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+                  decoration: BoxDecoration(
+                    color: Colors.teal.shade200,
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: Row(
+                    //mail
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Email:"),
+                      SizedBox(
+                        width: 20,
                       ),
-                    ) //metni almak içindir fakat expanded içerisinde olmalıdır.
-                  ],
+                      Gap(20),
+                      Expanded(
+                        child: TextField(
+                          controller:
+                              emailController, //yazi günceleme yöneticisi
+                        ),
+                      ) //metni almak içindir fakat expanded içerisinde olmalıdır.
+                    ],
+                  ),
                 ), //mail bitis
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("Password:"),
-                    Gap(20),
-                    //SizedBox(width: 20,),
-                    Expanded(
-                      child: TextField(
-                        controller:
-                            passwordController, //yazi günceleme yöneticisi
-                      ),
-                    ) //metni almak içindir fakat expanded içerisinde olmalıdır.
-                  ],
+                Gap(8),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+                  decoration: BoxDecoration(
+                    color: Colors.teal.shade200,
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Password:"),
+                      Gap(20),
+                      //SizedBox(width: 20,),
+                      Expanded(
+                        child: TextField(
+                          controller:
+                              passwordController, //yazi günceleme yöneticisi
+                        ),
+                      ) //metni almak içindir fakat expanded içerisinde olmalıdır.
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: 15,
@@ -417,6 +488,7 @@ class _InfoScreenState extends State<InfoScreen> {
                 SizedBox(
                   height: 15,
                 ),
+
                 ...buildHobbies(), //üç nokta köşeliparantezi görmezden gelir.
                 //ElevatedButton( onPressed: readStorage, child: Text("Read"),),
                 //ElevatedButton(onPressed: writeStorage, child: Text("Saved"),),
@@ -459,3 +531,4 @@ class MyCheckBox extends StatelessWidget {
     );
   }
 }
+*/
