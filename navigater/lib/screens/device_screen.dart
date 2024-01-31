@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
+import 'package:gap/gap.dart';
 
 class DeviceScreen extends StatefulWidget {
   const DeviceScreen({super.key});
@@ -64,8 +65,15 @@ class _DeviceScreenState extends State<DeviceScreen> {
           InkWell(
             onTap: () => Navigator.of(context).pushNamed("/welcome"),
             child: const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Icon(Icons.home),
+              padding: EdgeInsets.all(6),
+              //padding: EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.home),
+                  Text("Turn Home"),
+                ],
+              ),
             ),
           ),
         ], //() => Navigator.of(context).pushNamed("/info")

@@ -49,18 +49,18 @@ class _LoginScreenState extends State<LoginScreen> {
     final API api = API(); //api sinifindan bir nesne ürettik.
 
     try {
-      final result = await api.loginUser(
-          username: emailController.text, password: passwordController.text);
+      final response = await api.loginUser(
+          email: emailController.text, password: passwordController.text);
 
-      if (result is Exception) {
+      if (response is Exception) {
         //eger giriş başarıylsa
         // ignore: use_build_context_synchronously
         //Navigator.pushNamedAndRemoveUntil(context, "/home", (route) => false);
-        print(result);
+        print(response);
         showError(context);
       } else {
         final SharedPreferences prefs = await SharedPreferences.getInstance();
-        String user = jsonEncode(result);;
+        String user = jsonEncode(response);;
         await prefs.setString("user", user);
 
         //ana ekrana  yönld.
@@ -129,6 +129,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 hintText:
                                     "Enter your email address" //YER TUTUCU
                                 ),
+                                obscureText: true,//pass. gizlemek için
                           ),
                         ),
                         const SizedBox(

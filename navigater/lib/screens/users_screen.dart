@@ -16,7 +16,7 @@ class UsersScreen extends StatefulWidget {
 class _UsersScreenState extends State<UsersScreen> {
   bool loading = false;
   int currentPage = 1; //hng. sayfadayım?
-  int totalPages = 5; //kaç sayfam var?
+  int totalPages = 3; //kaç sayfam var?
   List<dynamic> users = [
     //kullanıcıları buraya yerlestırcz
   ];
@@ -119,20 +119,22 @@ class _UsersScreenState extends State<UsersScreen> {
       users = result["data"];
       loading = false;
     });
+    currentPage++;
   }
 }
 
-  List<Widget> drawUsers() {
-    List<Widget> r = [];
+List<Widget> drawUsers() {
+  List<Widget> r = [];
 
-    for (var element in users) {
-      r.add(
-        UserTile(element: element),
-      );
-    }
+  users.forEach((element) {
+    r.add(
+      UserTile(element: element),
+    );
+  });
 
-    return r;
-  }
+  return r;
+}
+
 
   @override
   Widget build(BuildContext context) {

@@ -49,7 +49,8 @@ class MyApp extends StatelessWidget {
 
       },
       
-      initialRoute: '/welcome',
+      initialRoute: '/loading',
+      //'/welcome',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
