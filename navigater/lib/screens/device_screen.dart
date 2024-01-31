@@ -59,12 +59,12 @@ class _DeviceScreenState extends State<DeviceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Device Info"),
+        title: const Text("Device Info"),
         actions: [
           InkWell(
             onTap: () => Navigator.of(context).pushNamed("/welcome"),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
+            child: const Padding(
+              padding: EdgeInsets.all(8.0),
               child: Icon(Icons.home),
             ),
           ),

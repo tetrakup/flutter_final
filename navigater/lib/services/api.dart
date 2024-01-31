@@ -47,15 +47,16 @@ class API {
 loginUser({required String username, required String password})async{//page1=1.sayfadan baslar
     try {
       
-      final String url = "base_url/login";
+      final String url = "https://cey/login";
 
       final parameters = {
          "email": username,
          "password": password,
          };
       
-      final response = await dio.post(url,
-      data: FormData.fromMap(parameters),
+      final response = await dio.post(
+        url,
+        data: FormData.fromMap(parameters),
       //options: Options(contentType: Headers.formUrlEncodedContentType,),//api formatı farklı olsaydı bunu uyarlamak için (x-www-form-urlencoded)
       ); //sonucu response'a ata.
       

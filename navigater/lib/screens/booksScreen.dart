@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
 
 void main() {
@@ -79,10 +80,10 @@ final List<Map<String, String>> books3 = [
   List<Widget> bookList() {
     List<Widget> t = [];
 
-    books.forEach((element) {
+    for (var element in books) {
       t.add(BookList(
           element["photo"]!, element["bookName"]!, element["writer"]!));
-    });
+    }
 
   
     return t;
@@ -101,10 +102,10 @@ final List<Map<String, String>> books3 = [
       List<Widget> bookList3() {
     List<Widget> t = [];
 
-    books3.forEach((element) {
+    for (var element in books3) {
       t.add(BookList3(
           element["photo"]!, element["bookName"]!, element["writer"]!));
-    });
+    }
   
     return t;
 
@@ -148,7 +149,7 @@ final List<Map<String, String>> books3 = [
         onTap: () {
           Navigator.pushNamed(context, '/home'); // Ana menüye dönme işlemi
         },
-        child: Row(//burada image ve yazı var.
+        child: const Row(//burada image ve yazı var.
           children: [
             CircleAvatar(
             radius: 18,
@@ -159,10 +160,10 @@ final List<Map<String, String>> books3 = [
               "assets/images/logo.jpg",
               width: 30,
             ),*/
-            const SizedBox(
+            SizedBox(
               width: 5,
             ),
-            const Text(
+            Text(
               "Books",
               style: TextStyle(
                 color: Colors.white,
@@ -171,7 +172,7 @@ final List<Map<String, String>> books3 = [
           ],
         ),
       ),
-      Row(
+      const Row(
         children: [
           Icon(Icons.book_sharp, color: Colors.greenAccent),
           SizedBox(width: 1,),
@@ -561,6 +562,7 @@ final List<Map<String, String>> books3 = [
 
 
 
+  // ignore: non_constant_identifier_names
   Widget BookList3(String photo, String title, String artist) {
     return Padding(
       padding: const EdgeInsets.only(

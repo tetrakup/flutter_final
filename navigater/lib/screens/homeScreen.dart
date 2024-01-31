@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../widgets/menuItem.dart';
 import '../widgets/profileItem.dart';
 import '../screens/Category.dart';
-import '../screens/BooksScreen.dart';
+import 'booksScreen.dart';
 
 
 int _selectedIndex = 0;
@@ -31,7 +31,7 @@ static final List<Widget> _widgetOptions = <Widget>[
       
       appBar: AppBar(
         //title: Text("1K") ,
-        title: Text(
+        title: const Text(
   "Home",style: TextStyle(
     fontSize: 24, // Yazı boyutu
     color:  Color.fromARGB(255, 52, 53, 54), // Metin rengi
@@ -52,7 +52,7 @@ static final List<Widget> _widgetOptions = <Widget>[
             Expanded(
               child: Column(
                 children: [
-                  Divider(
+                  const Divider(
                     height: 5,
                   ),
                   MenuItem(
@@ -78,13 +78,13 @@ static final List<Widget> _widgetOptions = <Widget>[
                     onTap: () {Navigator.pushNamed(context, "/Kategoriler");_selectedIndex=1;},
                   ),
                   //3.menuitem n Divider
-                  Divider(
+                  const Divider(
                     height: 5,
                     color: Colors.greenAccent,
                   ),
                   MenuItem(
                     title: "writers",
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.person_2,
                       size: 20,
                       color: Colors.greenAccent,
@@ -94,9 +94,9 @@ static final List<Widget> _widgetOptions = <Widget>[
                     },
                   ),
                   //6.menuitem logout
-                  Divider(),
+                  const Divider(),
                   MenuItem(
-                   icon: Icon(
+                   icon: const Icon(
                       Icons.logout_outlined,
                       size: 20,
                       color: Colors.greenAccent,
@@ -110,14 +110,14 @@ static final List<Widget> _widgetOptions = <Widget>[
                 ],
               ),
             ),
-            Text(
+            const Text(
               "Version 1.0.2",
               style: TextStyle(
                 color: Colors.purple,
                 fontSize: 10,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
           ],
         ),
       ),

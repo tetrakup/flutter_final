@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
 
 
@@ -66,7 +67,7 @@ class _KategorilerState extends State<Kategoriler> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     appBar: AppBar(title: Text("Categories"),),
+     appBar: AppBar(title: const Text("Categories"),),
       backgroundColor:Colors.black,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -105,7 +106,7 @@ class _KategorilerState extends State<Kategoriler> {
                           blendMode: BlendMode.dstIn,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(10),
-                            child: Container(decoration: BoxDecoration(gradient: LinearGradient(colors: [Colors.black,Colors.greenAccent])),)
+                            child: Container(decoration: const BoxDecoration(gradient: LinearGradient(colors: [Colors.black,Colors.greenAccent])),)
                           ),
                         ),
                         Padding(

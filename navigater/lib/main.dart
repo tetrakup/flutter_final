@@ -10,7 +10,7 @@ import 'screens/registerScreen.dart';
 import 'screens/users_screen.dart';
 import 'screens/writerScreen.dart';
 import 'screens/welcomeScreen.dart';
-import 'screens/BooksScreen.dart';
+import 'screens/booksScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,7 +22,6 @@ class MyApp extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    print(ThemeMode.system);
     return MaterialApp(
       title: 'Flutter Demo',
       themeMode: ThemeMode.dark,

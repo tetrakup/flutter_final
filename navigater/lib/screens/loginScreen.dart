@@ -1,4 +1,9 @@
+import 'dart:convert';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../services/api.dart';
 
@@ -19,18 +24,18 @@ class _LoginScreenState extends State<LoginScreen> {
       context: context,
       barrierDismissible: true,
       builder: (context) => CupertinoAlertDialog(
-        title: Row(
+        title: const Row(
           children: [
             Icon(Icons.warning),
             Gap(12.0),
             Text("Error"),
           ],
         ),
-        content: Text("Check your internet connection and try again"),
+        content: const Text("Invalid credentials check and try again"),
         actions: [
           CupertinoDialogAction(
             onPressed: () => Navigator.of(context).pop(),
-            child: Text("Ok"),
+            child: const Text("Ok"),
           ),
         ],
       ),
@@ -41,16 +46,53 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       loading = false;
     });
-    final API api = API();//api sinifindan bir nesne ürettik.
-    
-    final result = await api.loginUser(username: emailController.text, password: passwordController.text);
-  
-  if(result is Exception){
-    print(result);
+    final API api = API(); //api sinifindan bir nesne ürettik.
+
+    try {
+      final result = await api.loginUser(
+          username: emailController.text, password: passwordController.text);
+
+      if (result is Exception) {
+        //eger giriş başarıylsa
+        // ignore: use_build_context_synchronously
+        //Navigator.pushNamedAndRemoveUntil(context, "/home", (route) => false);
+        print(result);
+        showError(context);
+      } else {
+        final SharedPreferences prefs = await SharedPreferences.getInstance();
+        String user = jsonEncode(result);;
+        await prefs.setString("user", user);
+
+        //ana ekrana  yönld.
+      }
+    } catch (e) {
+      //giriş başarısızsa
+      print("hata oluştu: $e");
+    } finally {
+      setState(() {
+        loading = false;
+      });
+    }
   }
-  else{
-    print(result);
+
+  checkSession()async{
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    var user = prefs.getString("user");
+
+    if(user != null){
+      var x = jsonDecode(user);
+      print(x);
+    }
+    else{
+      print("No logins, please log in");
+    }
   }
+
+  @override
+  void initState() {
+    checkSession();
+    super.initState();
   }
 
 
@@ -58,73 +100,77 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Login"),
+        title: const Text("Login"),
       ),
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(18.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text("Email:"),
-              SizedBox(
-                height: 5,
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
-                decoration: BoxDecoration(
-                  color: Colors.blueGrey,
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                child: TextField(
-                  controller: emailController,
-                  decoration: InputDecoration(
-                      hintText: "Enter your email address" //YER TUTUCU
-                      ),
-                ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Text("Password:"),
-              SizedBox(
-                height: 5,
-              ),
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
-                decoration: BoxDecoration(
-                  color: Colors.blueGrey,
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                child: TextField(
-                  controller: passwordController,
-
-                  decoration:
-                      InputDecoration(hintText: "Please, enter your password"),
-                  obscureText: true, // Şifrenin gizli olarak gösterilmesi için
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+        child: loading
+            ? const Center(child: CircularProgressIndicator())
+            : Column(
                 children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamedAndRemoveUntil(
-                          context,
-                          "/home",
-                          (Route<dynamic> route) =>
-                              false); //pushla üzerine yaz adlandır
-                    },
-                    child: Text("Login"),
+                  Padding(
+                    padding: const EdgeInsets.all(18.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text("Email:"),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 30, vertical: 5),
+                          decoration: BoxDecoration(
+                            color: Colors.blueGrey,
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                          child: TextField(
+                            controller: emailController,
+                            decoration: const InputDecoration(
+                                hintText:
+                                    "Enter your email address" //YER TUTUCU
+                                ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        const Text("Password:"),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 30, vertical: 5),
+                          decoration: BoxDecoration(
+                            color: Colors.blueGrey,
+                            borderRadius: BorderRadius.circular(25),
+                          ),
+                          child: TextField(
+                            controller: passwordController,
+
+                            decoration: const InputDecoration(
+                                hintText: "Please, enter your password"),
+                            obscureText:
+                                true, // Şifrenin gizli olarak gösterilmesi için
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            ElevatedButton(
+                              onPressed: loginUser,
+                              child: const Text("Login"),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
-            ],
-          ),
-        ),
       ),
     );
   }
