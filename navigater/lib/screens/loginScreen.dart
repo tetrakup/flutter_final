@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:navigater/core/storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../services/api.dart';
@@ -54,14 +55,23 @@ class _LoginScreenState extends State<LoginScreen> {
 
       if (response is Exception) {
         //eger giriş başarıylsa
-        // ignore: use_build_context_synchronously
         //Navigator.pushNamedAndRemoveUntil(context, "/home", (route) => false);
         print(response);
         showError(context);
       } else {
-        final SharedPreferences prefs = await SharedPreferences.getInstance();
-        String user = jsonEncode(response);;
-        await prefs.setString("user", user);
+        Storage storage = await Storage();
+        await storage.saveUser(
+            id: response["data"]["user"]["id"],
+            name: response["data"]["user"]["name"],
+            email: response["data"]["user"]["email"],
+            phone: response["data"]["user"]["phone_number"]);
+
+        await storage.saveToken(response["data"]["token"]);
+
+        Navigator.of(context).pushReplacementNamed("/home");
+        // final SharedPreferences prefs = await SharedPreferences.getInstance();
+        // String user = jsonEncode(response);
+        // await prefs.setString("user", user);
 
         //ana ekrana  yönld.
       }
@@ -75,16 +85,15 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  checkSession()async{
+  checkSession() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
     var user = prefs.getString("user");
 
-    if(user != null){
+    if (user != null) {
       var x = jsonDecode(user);
       print(x);
-    }
-    else{
+    } else {
       print("No logins, please log in");
     }
   }
@@ -94,7 +103,6 @@ class _LoginScreenState extends State<LoginScreen> {
     checkSession();
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +137,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                 hintText:
                                     "Enter your email address" //YER TUTUCU
                                 ),
-                                obscureText: true,//pass. gizlemek için
                           ),
                         ),
                         const SizedBox(

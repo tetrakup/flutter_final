@@ -156,13 +156,6 @@ final List<Map<String, String>> books3 = [
             backgroundImage: AssetImage("assets/images/avatar.jpg"),
           ),
           SizedBox(width: 15,),
-            /*Image.asset(
-              "assets/images/logo.jpg",
-              width: 30,
-            ),*/
-            SizedBox(
-              width: 5,
-            ),
             Text(
               "Books",
               style: TextStyle(
@@ -172,20 +165,19 @@ final List<Map<String, String>> books3 = [
           ],
         ),
       ),
-      const Row(
-        children: [
-          Icon(Icons.book_sharp, color: Colors.greenAccent),
-          SizedBox(width: 1,),
-          Icon(Icons.edit, color: Colors.greenAccent),
-          SizedBox(width: 1,),
-         // Icon(Icons.search, color: Colors.white),
-          SizedBox(width: 15,),
-          /*CircleAvatar(
-            radius: 13,
-            backgroundImage: AssetImage("assets/images/avatar.jpg"),
-          ),*/
-        ],
-      ),
+      InkWell(
+            onTap: () => Navigator.of(context).pushNamed("/users"),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.person, color: Colors.white, ),
+                  Text('Readers', style: TextStyle(color: Colors.white),),
+                ],
+              ),
+            ),
+          ),
     ],
   ),
 ),

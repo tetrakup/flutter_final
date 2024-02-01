@@ -322,16 +322,6 @@ class _InfoScreenState extends State<InfoScreen> {
               child: Icon(Icons.save),
             ),
           ),
-          //usersscren ekleme
-          Gap(3),
-          InkWell(
-            onTap: () => Navigator.of(context).pushNamed("/users"),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Icon(Icons.person),
-            ),
-          ),
-          //usersscreen bitis
         ], //AppBar'ın bir özelliği. aksiyon-liste
       ),
       body: SafeArea(
@@ -362,28 +352,28 @@ class _InfoScreenState extends State<InfoScreen> {
                   ),
                 ),
                 Gap(8),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
-                  decoration: BoxDecoration(
-                    color: Colors.teal.shade200,
-                    borderRadius: BorderRadius.circular(25),
-                  ),
-                  child: Row(
-                    //apple switch
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("Account Status:"),
-                      CupertinoSwitch(
-                          value: active, //en guncel degeri burada tutuyor.
-                          onChanged: (value) {
-                            active = value;
-                            setState(
-                                () {}); //statefull durum degerleri degistirildiginde durumları güncellemek için
-                          }),
-                    ],
-                  ),
-                ), //apple switch bitis
-                Gap(8),
+                // Container(
+                //   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+                //   decoration: BoxDecoration(
+                //     color: Colors.teal.shade200,
+                //     borderRadius: BorderRadius.circular(25),
+                //   ),
+                //   child: Row(
+                //     //apple switch
+                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //     children: [
+                //       Text("Account Status:"),
+                //       CupertinoSwitch(
+                //           value: active, //en guncel degeri burada tutuyor.
+                //           onChanged: (value) {
+                //             active = value;
+                //             setState(
+                //                 () {}); //statefull durum degerleri degistirildiginde durumları güncellemek için
+                //           }),
+                //     ],
+                //   ),
+                // ), //apple switch bitis
+                // Gap(8),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
                   decoration: BoxDecoration(

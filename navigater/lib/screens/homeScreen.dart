@@ -30,7 +30,6 @@ static final List<Widget> _widgetOptions = <Widget>[
       key: _scaffoldKey,
       
       appBar: AppBar(
-        //title: Text("1K") ,
         title: const Text(
   "Home",style: TextStyle(
     fontSize: 24, // Yazı boyutu
