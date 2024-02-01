@@ -7,6 +7,7 @@ class API {
       "https://key1.tech/api"; //"https://reqres.in/api";//tekrarlanan ana URL burada.
   //asenkron old. belirtmenin iki yolu: n() async{} veya Future<Veri_Türü>(){}
   final String baseUrll = "https://reqres.in/api";
+  
   getUsers({int page = 1}) async {
     //page1=1.sayfadan baslar
     try {
