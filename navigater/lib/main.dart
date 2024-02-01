@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) =>const  HomeScreen(),
         '/login': (context) =>const  LoginScreen(),
         '/register': (context) =>const InfoScreen(),
-        '/profile': (context) =>const  ProfileScreen(),
+        '/profile': (context) =>  ProfileScreen(user: {},),
         '/welcome': (context) =>const  WelcomeScreen(),
         '/writers': (context) => writerScreen(),
         '/anaekran': (context) => BooksScreen(),

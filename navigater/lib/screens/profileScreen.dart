@@ -3,7 +3,10 @@ import 'package:navigater/widgets/menuItem.dart';
 import 'package:navigater/widgets/profileItem.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  //const ProfileScreen({super.key});
+  final Map<String, dynamic> user;
+
+  ProfileScreen({required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -21,17 +24,31 @@ class ProfileScreen extends StatelessWidget {
                 Navigator.pushNamed(context, "/profile");
               },*/
             ),
-            Divider(),
+            //id baslangic
             MenuItem(
-              icon: Icon(Icons.email),
-              title: "Email: ceylan.atay@gmail.com",
+              icon: Icon(Icons.perm_identity),
+              title: "id: ${user["id"]}",
               onTap: () {},
             ),
+            Divider(),
+            //id bitis
+            MenuItem(
+              icon: Icon(Icons.person),
+              title: "Name: ${user["name"]}",
+              onTap: () {},
+            ),
+            //email ekleme
+            MenuItem(
+              icon: Icon(Icons.email),
+              title: "Email: ${user["email"]}",
+              onTap: () {},
+            ),
+            //email bitis
             Divider(),
             //2.ıtem
             MenuItem(
               icon: Icon(Icons.phone),
-              title: "Phone: +90 555 000 12 12",
+              title: "Phone: ${user["phone_number"]}",
               onTap: () {},
             ),
             Divider(),

@@ -141,10 +141,10 @@ class _InfoScreenState extends State<InfoScreen> {
         backgroundColor: Colors.green,
         behavior: SnackBarBehavior.floating,
         action: SnackBarAction(
-          label: 'Go to Home', // Butonun üzerinde görünecek metin
+          label: 'Go to Login', // Butonun üzerinde görünecek metin
           onPressed: () {
             Navigator.pushNamedAndRemoveUntil(
-                context, "/home", (Route<dynamic> route) => false);
+                context, "/login", (Route<dynamic> route) => false);
           },
         ),
       )); //renk özelliği
