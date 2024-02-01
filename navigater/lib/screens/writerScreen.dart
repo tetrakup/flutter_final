@@ -59,14 +59,6 @@ class writerScreen extends StatelessWidget {
                   ),
                 ],
               ),
-
-              // Text(
-              //   "Author Photos",
-              //   style: TextStyle(
-              //     fontSize: 20,
-              //     fontWeight: FontWeight.bold,
-              //   ),
-              // ),
               Divider(
                 thickness: 2,
               ),

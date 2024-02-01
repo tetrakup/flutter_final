@@ -181,7 +181,7 @@ class BooksScreen extends StatelessWidget {
                               children: [
                                 SvgPicture.asset(
                                   "assets/icons/team.svg",
-                                  height: 27,
+                                  height: 30,
                                   colorFilter: ColorFilter.mode(
                                       Colors.blueGrey, BlendMode.srcIn),
                                 ),

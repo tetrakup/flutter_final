@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:navigater/core/storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -165,15 +166,59 @@ class _LoginScreenState extends State<LoginScreen> {
                         const SizedBox(
                           height: 20,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ElevatedButton(
-                              onPressed: loginUser,
-                              child: const Text("Login"),
-                            ),
-                          ],
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.center,
+                        //   children: [
+                        //     ElevatedButton(
+                        //       onPressed: loginUser,
+                        //       child: const Text("Login"),
+                        //     ),
+                        //   ],
+                        // ),
+                        ElevatedButton(
+                          onPressed: loginUser,
+                          child: Row(
+                            children: [
+                              SvgPicture.asset(
+                                "assets/icons/login.svg",
+                                height: 30,
+                                colorFilter: ColorFilter.mode(
+                                  Colors.white60,
+                                  BlendMode.srcIn,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text("Click to Login!"),
+                            ],
+                          ),
                         ),
+                        Gap(8),
+                        //hala üye degil misin?üye ol.
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/register');
+                          },
+                          child: Row(
+                            children: [
+                              //Icon(Icons.app_registration),
+                              SvgPicture.asset(
+                                "assets/icons/register.svg",
+                                height: 30,
+                                colorFilter: ColorFilter.mode(
+                                  Colors.white60,
+                                  BlendMode.srcIn,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text("Still Not a Member? Join Us!"),
+                            ],
+                          ),
+                        ),
+                        //üye ol bitis
                       ],
                     ),
                   ),

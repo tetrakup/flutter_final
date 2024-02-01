@@ -24,6 +24,7 @@ class ProfileScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                Gap(5),
                 ProfileItem(
                   avatar: 'assets/images/avatar.jpg',
                   name: "Ceylan Atay",
