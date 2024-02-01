@@ -158,7 +158,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               SvgPicture.asset(
                                 "assets/icons/logout.svg",
-                                height: 30,
+                                height: 20,
                                 colorFilter: ColorFilter.mode(
                                   Colors.white60,
                                   BlendMode.srcIn,

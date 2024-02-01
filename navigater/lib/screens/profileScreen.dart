@@ -76,37 +76,29 @@ class ProfileScreen extends StatelessWidget {
                   child: Text("Go back"),
                 ),
                 Gap(10),
-                /*ElevatedButton(
-                  onPressed: () async{
+                ElevatedButton(
+                  onPressed: () async {
                     Storage storage = Storage();
                     await storage.clearUser();
                     Navigator.of(context).pushReplacementNamed("/login");
                   },
-                  child: Text("Logout"),
-                ),*/
-                ElevatedButton(
-                          onPressed:() async {
-                            Storage storage = Storage();
-                    await storage.clearUser();
-                    Navigator.of(context).pushReplacementNamed("/login");
-                  },
-                          child: Row(
-                            children: [
-                              SvgPicture.asset(
-                                "assets/icons/logout.svg",
-                                height: 30,
-                                colorFilter: ColorFilter.mode(
-                                  Colors.white60,
-                                  BlendMode.srcIn,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text("Logout"),
-                            ],
-                          ),
+                  child: Row(
+                    children: [
+                      SvgPicture.asset(
+                        "assets/icons/logout.svg",
+                        height: 20,
+                        colorFilter: ColorFilter.mode(
+                          Colors.white60,
+                          BlendMode.srcIn,
                         ),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text("Logout"),
+                    ],
+                  ),
+                ),
               ],
             ),
           ],

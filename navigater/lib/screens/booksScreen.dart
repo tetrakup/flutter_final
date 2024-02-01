@@ -171,28 +171,56 @@ class BooksScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        InkWell(
-                          onTap: () =>
-                              Navigator.of(context).pushNamed("/users"),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                SvgPicture.asset(
-                                  "assets/icons/team.svg",
-                                  height: 30,
-                                  colorFilter: ColorFilter.mode(
-                                      Colors.blueGrey, BlendMode.srcIn),
+                        Row(
+                          children: [
+                            InkWell(
+                              onTap: () =>
+                                  Navigator.of(context).pushNamed("/users"),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    SvgPicture.asset(
+                                      "assets/icons/team.svg",
+                                      height: 30,
+                                      colorFilter: ColorFilter.mode(
+                                          Colors.blueGrey, BlendMode.srcIn),
+                                    ),
+                                    Text(
+                                      'Readers',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                  ],
                                 ),
-                                Text(
-                                  'Readers',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ],
+                              ),
                             ),
-                          ),
+                                                  //device start
+                                                  InkWell(
+                              onTap: () =>
+                                  Navigator.of(context).pushNamed("/devices"),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    SvgPicture.asset(
+                                      "assets/icons/device.svg",
+                                      height: 25,
+                                      colorFilter: ColorFilter.mode(
+                                          Colors.blueGrey, BlendMode.srcIn),
+                                    ),
+                                    Text(
+                                      'System Information',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
+                        //device finish
                       ],
                     ),
                   ),
