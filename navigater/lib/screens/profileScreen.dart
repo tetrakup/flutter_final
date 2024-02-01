@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:navigater/core/storage.dart';
 import 'package:navigater/widgets/menuItem.dart';
 import 'package:navigater/widgets/profileItem.dart';
 
@@ -10,7 +11,8 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    final user =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
 
     return Scaffold(
       body: Center(
@@ -60,13 +62,27 @@ class ProfileScreen extends StatelessWidget {
             SizedBox(
               height: 25,
             ),
-            ElevatedButton(
-              onPressed: () {
-                if (Navigator.canPop(context)) {
-                  Navigator.pop(context);
-                }
-              },
-              child: Text("Go back"),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    if (Navigator.canPop(context)) {
+                      Navigator.pop(context);
+                    }
+                  },
+                  child: Text("Go back"),
+                ),
+                Gap(10),
+                ElevatedButton(
+                  onPressed: () async{
+                    Storage storage = Storage();
+                    await storage.clearUser();
+                    Navigator.of(context).pushReplacementNamed("/login");
+                  },
+                  child: Text("Logout"),
+                ),
+              ],
             ),
           ],
         ),

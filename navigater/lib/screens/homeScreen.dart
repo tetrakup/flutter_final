@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Map<String, dynamic> user = {
     "name":"",
     "id":-1,
-    "phone":"",
+    "phone_number":"",
     "email":"",
   };
 
@@ -136,18 +136,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     //6.menuitem logout
                     const Divider(),
-                    MenuItem(
-                      icon: const Icon(
-                        Icons.logout_outlined,
-                        size: 20,
-                        color: Colors.greenAccent,
-                      ),
-                      onTap: () {
-                        Navigator.pushNamedAndRemoveUntil(
-                            context, '/welcome', (route) => false);
-                      },
-                      title: "Logout", //burada
-                    ),
+                    ElevatedButton(
+                  onPressed: () async{
+                    Storage storage = Storage();
+                    await storage.clearUser();
+                    Navigator.of(context).pushReplacementNamed("/login");
+                  },
+                  child: Text("Logout"),
+                ),
                   ],
                 ),
               ),

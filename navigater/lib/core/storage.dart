@@ -46,4 +46,16 @@ loadToken() async{
   var token = await storage.read(key: "token");
   return token;
 }
+
+clearUser()async{//braya  geld. tüm bilg. shared_pref. e token'dan silinecek.
+  SharedPreferences storage = await SharedPreferences.getInstance();
+  final secureStorage = new FlutterSecureStorage();
+
+  await storage.remove("id");//clear da olabilirdi fakat tüm bilg. sild. için önerilmez.
+  await storage.remove("name");
+  await storage.remove("email");
+  await storage.remove("phone_number");
+
+  await secureStorage.delete(key :"token");
+}
 }
