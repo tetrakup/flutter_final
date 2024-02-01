@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:navigater/core/storage.dart';
 import 'package:navigater/widgets/menuItem.dart';
@@ -75,14 +76,37 @@ class ProfileScreen extends StatelessWidget {
                   child: Text("Go back"),
                 ),
                 Gap(10),
-                ElevatedButton(
+                /*ElevatedButton(
                   onPressed: () async{
                     Storage storage = Storage();
                     await storage.clearUser();
                     Navigator.of(context).pushReplacementNamed("/login");
                   },
                   child: Text("Logout"),
-                ),
+                ),*/
+                ElevatedButton(
+                          onPressed:() async {
+                            Storage storage = Storage();
+                    await storage.clearUser();
+                    Navigator.of(context).pushReplacementNamed("/login");
+                  },
+                          child: Row(
+                            children: [
+                              SvgPicture.asset(
+                                "assets/icons/logout.svg",
+                                height: 30,
+                                colorFilter: ColorFilter.mode(
+                                  Colors.white60,
+                                  BlendMode.srcIn,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text("Logout"),
+                            ],
+                          ),
+                        ),
               ],
             ),
           ],
