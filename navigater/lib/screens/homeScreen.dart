@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:navigater/core/storage.dart';
+import 'package:navigater/widgets/menuItem.dart';
+import 'package:navigater/widgets/profileItem.dart';
 
-import '../widgets/menuItem.dart';
-import '../widgets/profileItem.dart';
+//import '../widgets/menuItem.dart';
+//import '../widgets/profileItem.dart';
 import '../screens/Category.dart';
 import 'booksScreen.dart';
 

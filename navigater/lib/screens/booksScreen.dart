@@ -1,5 +1,6 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart'; //flutter svg desteklemediği için svg. destk. lib.
 
 void main() {
   runApp(BooksScreen());
@@ -53,17 +54,7 @@ class BooksScreen extends StatelessWidget {
     },
   ];
 
-final List<Map<String, String>> books3 = [
-  {
-      "photo": "assets/images/kitap9.jpg",
-      "bookName": "Outliers  ",
-      "writer": "Malcolm Gladwell",
-    },
-    {
-      "photo": "assets/images/kitap10.jpg",
-      "bookName": "Fareler ve İnsan",
-      "writer": "John Steinbeck",
-    },
+  final List<Map<String, String>> books3 = [
     {
       "photo": "assets/images/kitap9.jpg",
       "bookName": "Outliers  ",
@@ -74,8 +65,17 @@ final List<Map<String, String>> books3 = [
       "bookName": "Fareler ve İnsan",
       "writer": "John Steinbeck",
     },
-];
-  
+    {
+      "photo": "assets/images/kitap9.jpg",
+      "bookName": "Outliers  ",
+      "writer": "Malcolm Gladwell",
+    },
+    {
+      "photo": "assets/images/kitap10.jpg",
+      "bookName": "Fareler ve İnsan",
+      "writer": "John Steinbeck",
+    },
+  ];
 
   List<Widget> bookList() {
     List<Widget> t = [];
@@ -85,33 +85,30 @@ final List<Map<String, String>> books3 = [
           element["photo"]!, element["bookName"]!, element["writer"]!));
     }
 
-  
     return t;
   }
-    List<Widget> bookList2() {
+
+  List<Widget> bookList2() {
     List<Widget> t = [];
 
     books2.forEach((element) {
       t.add(BookList2(
           element["photo"]!, element["bookName"]!, element["writer"]!));
     });
-  
-    return t;
 
+    return t;
   }
-      List<Widget> bookList3() {
+
+  List<Widget> bookList3() {
     List<Widget> t = [];
 
     for (var element in books3) {
       t.add(BookList3(
           element["photo"]!, element["bookName"]!, element["writer"]!));
     }
-  
+
     return t;
-
   }
-
-
 
   // This widget is the root of your application.
   @override
@@ -140,47 +137,65 @@ final List<Map<String, String>> books3 = [
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [Padding(
-  padding: const EdgeInsets.all(10.0),
-  child: Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      GestureDetector(//burada botuna tıklandığında home'a döner.
-        onTap: () {
-          Navigator.pushNamed(context, '/home'); // Ana menüye dönme işlemi
-        },
-        child: const Row(//burada image ve yazı var.
-          children: [
-            CircleAvatar(
-            radius: 18,
-            backgroundImage: AssetImage("assets/images/avatar.jpg"),
-          ),
-          SizedBox(width: 15,),
-            Text(
-              "Books",
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 27,),),
-          ],
-        ),
-      ),
-      InkWell(
-            onTap: () => Navigator.of(context).pushNamed("/users"),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.person, color: Colors.white, ),
-                  Text('Readers', style: TextStyle(color: Colors.white),),
-                ],
-              ),
-            ),
-          ),
-    ],
-  ),
-),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          //burada botuna tıklandığında home'a döner.
+                          onTap: () {
+                            Navigator.pushNamed(
+                                context, '/home'); // Ana menüye dönme işlemi
+                          },
+                          child: const Row(
+                            //burada image ve yazı var.
+                            children: [
+                              CircleAvatar(
+                                radius: 18,
+                                backgroundImage:
+                                    AssetImage("assets/images/avatar.jpg"),
+                              ),
+                              SizedBox(
+                                width: 15,
+                              ),
+                              Text(
+                                "Books",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 27,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () =>
+                              Navigator.of(context).pushNamed("/users"),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(
+                                  "assets/icons/team.svg",
+                                  height: 27,
+                                  colorFilter: ColorFilter.mode(
+                                      Colors.blueGrey, BlendMode.srcIn),
+                                ),
+                                Text(
+                                  'Readers',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -311,8 +326,7 @@ final List<Map<String, String>> books3 = [
                         SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
-                            children:
-                                bookList(),
+                            children: bookList(),
                           ),
                         ),
                       ],
@@ -551,8 +565,6 @@ final List<Map<String, String>> books3 = [
       ),
     );
   }
-
-
 
   // ignore: non_constant_identifier_names
   Widget BookList3(String photo, String title, String artist) {
