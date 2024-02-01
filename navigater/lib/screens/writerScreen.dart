@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gap/gap.dart';
 
 class writerScreen extends StatelessWidget {
   writerScreen({Key? key}) : super(key: key);
@@ -37,13 +39,34 @@ class writerScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text(
-                "Author Photos",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    children: [
+                      SvgPicture.asset(
+                        "assets/icons/copyWriting.svg",
+                        height: 27,
+                        colorFilter:
+                            ColorFilter.mode(Colors.blueGrey, BlendMode.srcIn),
+                      ),
+                      Gap(5),
+                      Text(
+                        'Author Photos',
+                        style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold,),
+                      ),
+                    ],
+                  ),
+                ],
               ),
+
+              // Text(
+              //   "Author Photos",
+              //   style: TextStyle(
+              //     fontSize: 20,
+              //     fontWeight: FontWeight.bold,
+              //   ),
+              // ),
               Divider(
                 thickness: 2,
               ),
@@ -54,7 +77,7 @@ class writerScreen extends StatelessWidget {
                   writerImages.length,
                   (index) {
                     return InkWell(
-                      onTap: () { },
+                      onTap: () {},
                       child: Padding(
                         padding: EdgeInsets.all(4.0),
                         child: ClipRRect(
