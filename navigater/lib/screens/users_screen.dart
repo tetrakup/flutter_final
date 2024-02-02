@@ -142,7 +142,7 @@ List<Widget> drawUsers() {
       appBar: AppBar(
         title: GestureDetector(
           onTap: () {
-            // Burada başka bir sayfaya yönlendirme yapabilirsiniz
+            // Burada başka bir sayfaya yönlendirme yapabiliriz
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => UsersScreen()),

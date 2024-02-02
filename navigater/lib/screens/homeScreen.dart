@@ -20,24 +20,22 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   Map<String, dynamic> user = {
-    "name":"",
-    "id":-1,
-    "phone_number":"",
-    "email":"",
+    "name": "",
+    "id": -1,
+    "phone_number": "",
+    "email": "",
   };
 
-
-  checkLogin() async{
+  checkLogin() async {
     Storage storage = Storage();
 
     final user = await storage.loadUser();
 
-    if(user != null){
+    if (user != null) {
       setState(() {
-        this.user = user;//this kull. sebebi sinifin user'ı old. belirtmek.
+        this.user = user; //this kull. sebebi sinifin user'ı old. belirtmek.
       });
-    }
-    else{
+    } else {
       Navigator.pushReplacementNamed(context, "/login");
     }
   }
@@ -121,11 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         _selectedIndex = 1;
                       },
                     ),
-                    //3.menuitem n Divider
-                    const Divider(
-                      height: 5,
-                      color: Colors.greenAccent,
-                    ),
+                    //3.menuitem
                     MenuItem(
                       title: "writers",
                       icon: const Icon(
@@ -137,9 +131,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.pushNamed(context, "/writers");
                       },
                     ),
+                    const Divider(
+                      height: 5,
+                      color: Colors.greenAccent,
+                    ),
                     //6.menuitem logout
                     const Divider(),
-                   /* ElevatedButton(
+                    /* ElevatedButton(
                   onPressed: () async{
                     Storage storage = Storage();
                     await storage.clearUser();
@@ -147,31 +145,31 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                   child: Text("Logout"),
                 ),*/
-                //elevatedbutton deneme baslangic
-                ElevatedButton(
-                          onPressed:() async {
-                            Storage storage = Storage();
-                    await storage.clearUser();
-                    Navigator.of(context).pushReplacementNamed("/login");
-                  },
-                          child: Row(
-                            children: [
-                              SvgPicture.asset(
-                                "assets/icons/logout.svg",
-                                height: 20,
-                                colorFilter: ColorFilter.mode(
-                                  Colors.white60,
-                                  BlendMode.srcIn,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text("Logout"),
-                            ],
+                    //elevatedbutton deneme baslangic
+                    ElevatedButton(
+                      onPressed: () async {
+                        Storage storage = Storage();
+                        await storage.clearUser();
+                        Navigator.of(context).pushReplacementNamed("/login");
+                      },
+                      child: Row(
+                        children: [
+                          SvgPicture.asset(
+                            "assets/icons/logout.svg",
+                            height: 20,
+                            colorFilter: ColorFilter.mode(
+                              Colors.white60,
+                              BlendMode.srcIn,
+                            ),
                           ),
-                        ),
-                        //elevatedbutton deneme bitis
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text("Logout"),
+                        ],
+                      ),
+                    ),
+                    //elevatedbutton deneme bitis
                   ],
                 ),
               ),

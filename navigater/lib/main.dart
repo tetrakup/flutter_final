@@ -12,7 +12,6 @@ import 'screens/users_screen.dart';
 import 'screens/writerScreen.dart';
 import 'screens/welcomeScreen.dart';
 import 'screens/booksScreen.dart';
-import 'screens/loading.dart';
 
 void main() {
   runApp(const MyApp());

@@ -40,6 +40,7 @@ class API {
       // try {String url = "$baseUrl/users/2";}
       // catch (e) {//hata e'de tutulur ve hata verd. burayi calistir
       // }
+      print(e);
     }
     //createUser(){}
   }

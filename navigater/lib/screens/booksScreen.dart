@@ -195,8 +195,8 @@ class BooksScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                                                  //device start
-                                                  InkWell(
+                            //device start
+                            InkWell(
                               onTap: () =>
                                   Navigator.of(context).pushNamed("/devices"),
                               child: Padding(

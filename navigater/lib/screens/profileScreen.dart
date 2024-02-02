@@ -4,11 +4,43 @@ import 'package:gap/gap.dart';
 import 'package:navigater/core/storage.dart';
 import 'package:navigater/widgets/menuItem.dart';
 import 'package:navigater/widgets/profileItem.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfileScreen extends StatelessWidget {
   final Map<String, dynamic> user;
 
   ProfileScreen({required this.user});
+
+  instagram() {
+    final Uri uri =
+        Uri.parse("https://instagram.com/s.cylnty"); 
+    launchUrl(uri);
+  }
+
+  linkedin() {
+    final Uri uri =
+        Uri.parse("https://linkedin.com/in/ceylanatay"); 
+    launchUrl(uri);
+  }
+
+  call() {
+    final Uri uri = Uri.parse("tel:+905554443322"); 
+    launchUrl(uri);
+  }
+
+  sms() {
+    final Uri uri = Uri.parse("sms:+905554443322"); 
+    launchUrl(uri);
+  }
+
+  mail() {
+    final Uri uri = Uri.parse("mailto:fakemail@gmail.com?subject=Support Request&body=Hello, I have a problem with the application.");//yazıyı adrese çevir
+    launchUrl(uri);
+  }
+  whatsapp() {
+    final Uri uri = Uri.parse("https://wa.me/+905554443322?text=metin");
+    launchUrl(uri);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +92,88 @@ class ProfileScreen extends StatelessWidget {
               icon: Icon(Icons.topic),
               title: "About: Jr. Software Developer",
               onTap: () {},
+            ),
+            Row(
+              children: [
+                InkWell(
+                  onTap: call,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SvgPicture.asset(
+                      //call
+                      "assets/icons/call.svg",
+                      height: 30,
+                      colorFilter:
+                          ColorFilter.mode(Colors.blueGrey, BlendMode.srcIn),
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: mail,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SvgPicture.asset(
+                      //mail
+                      "assets/icons/mail.svg",
+                      height: 30,
+                      colorFilter:
+                          ColorFilter.mode(Colors.blueGrey, BlendMode.srcIn),
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: sms,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SvgPicture.asset(
+                      //sms
+                      "assets/icons/sms.svg",
+                      height: 30,
+                      colorFilter:
+                          ColorFilter.mode(Colors.blueGrey, BlendMode.srcIn),
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: instagram,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SvgPicture.asset(
+                      //instagram
+                      "assets/icons/instagram.svg",
+                      height: 30,
+                      colorFilter:
+                          ColorFilter.mode(Colors.blueGrey, BlendMode.srcIn),
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: linkedin,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SvgPicture.asset(
+                      //linkedin
+                      "assets/icons/linkedin.svg",
+                      height: 30,
+                      colorFilter:
+                          ColorFilter.mode(Colors.blueGrey, BlendMode.srcIn),
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: whatsapp,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SvgPicture.asset(
+                      //whatsapp
+                      "assets/icons/whatsapp.svg",
+                      height: 30,
+                      colorFilter:
+                          ColorFilter.mode(Colors.blueGrey, BlendMode.srcIn),
+                    ),
+                  ),
+                ),
+              ],
             ),
             SizedBox(
               height: 25,
