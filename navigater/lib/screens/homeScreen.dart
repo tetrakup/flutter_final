@@ -31,6 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
     "email": "",
   };
 
+
   //logout error
   logOut() {
     if (kIsWeb) {
@@ -208,11 +209,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         _selectedIndex = 1;
                       },
                     ),
-                    //3.menuitem n Divider
-                    const Divider(
-                      height: 5,
-                      color: Colors.greenAccent,
-                    ),
+                    //3.menuitem
                     MenuItem(
                       title: "writers",
                       icon: const Icon(
@@ -223,6 +220,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: () {
                         Navigator.pushNamed(context, "/writers");
                       },
+                    ),
+                    const Divider(
+                      height: 5,
+                      color: Colors.greenAccent,
                     ),
                     //6.menuitem logout
                     const Divider(),
