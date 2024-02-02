@@ -143,10 +143,7 @@ class _UsersScreenState extends State<UsersScreen> {
         title: GestureDetector(
           onTap: () {
             // Burada başka bir sayfaya yönlendirme yapabiliriz
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => UsersScreen()),
-            );
+            Navigator.of(context).pushReplacementNamed("/anaekran");
           },
           child: Text('Click to return to Register'),
         ),
