@@ -17,5 +17,5 @@ Bu uygulama, mobil programlama dersi kapsamında geliştirilmiştir. Kitap okuyu
 
 ## Süper Ziyaretçi (SuperVisitor)
 
-Keyvan Arasteh
+Keyvan Arasteh (@keyvanarasteh)
 
