@@ -23,7 +23,17 @@ class _writersScreenState extends State<writersScreen> {
       appBar: AppBar(),
       body: Column(
         children: [
-          Text("Device: $device"),
+          Row(children: [
+            CircleAvatar(
+              backgroundImage: AssetImage("assets/images/p1.jpg"),
+              radius:32,
+            ),
+            Column(
+              children: [
+                Text("Oğuz Atay"),
+              ],
+            ),
+          ],),
         ],
       ),
       drawer: null,
