@@ -1,4 +1,3 @@
-// ignore: file_names
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart'; //flutter svg desteklemediği için svg. destk. lib.
 
@@ -184,10 +183,10 @@ class BooksScreen extends StatelessWidget {
                                     SvgPicture.asset(
                                       "assets/icons/team.svg",
                                       height: 30,
-                                      colorFilter: ColorFilter.mode(
+                                      colorFilter: const ColorFilter.mode(
                                           Colors.blueGrey, BlendMode.srcIn),
                                     ),
-                                    Text(
+                                    const Text(
                                       'Readers',
                                       style: TextStyle(color: Colors.white),
                                     ),
@@ -207,10 +206,10 @@ class BooksScreen extends StatelessWidget {
                                     SvgPicture.asset(
                                       "assets/icons/device.svg",
                                       height: 25,
-                                      colorFilter: ColorFilter.mode(
+                                      colorFilter: const ColorFilter.mode(
                                           Colors.blueGrey, BlendMode.srcIn),
                                     ),
-                                    Text(
+                                    const Text(
                                       'System Information',
                                       style: TextStyle(color: Colors.white),
                                     ),

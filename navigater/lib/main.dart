@@ -12,7 +12,6 @@ import 'screens/users_screen.dart';
 import 'screens/writerScreen.dart';
 import 'screens/welcomeScreen.dart';
 import 'screens/booksScreen.dart';
-import 'screens/loading.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +20,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,25 +28,25 @@ class MyApp extends StatelessWidget {
       //theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
-      
+
       routes: {
-        '/home': (context) =>const  HomeScreen(),
-        '/login': (context) =>const  LoginScreen(),
-        '/register': (context) =>const InfoScreen(),
-        '/profile': (context) =>  ProfileScreen(user: {},),
-        '/welcome': (context) =>const  WelcomeScreen(),
+        '/home': (context) => const HomeScreen(),
+        '/login': (context) => const LoginScreen(),
+        '/register': (context) => const InfoScreen(),
+        '/profile': (context) => ProfileScreen(
+              user: const {},
+            ),
+        '/welcome': (context) => const WelcomeScreen(),
         '/writers': (context) => writerScreen(),
         '/anaekran': (context) => BooksScreen(),
-        "/Kategoriler":(context)=>const  Kategoriler(),
-      //  "/info": (context) => const InfoScreen(),
+        "/Kategoriler": (context) => const Kategoriler(),
         "/device": (context) => const DeviceScreen(),
-        "/users":(context) => const UsersScreen(),
-        "/devices":(context) => const DeviceScreen(),
-        "/loading":(context) => const LoadingScreen(),
-
-
+        "/users": (context) => const UsersScreen(),
+        "/devices": (context) => const DeviceScreen(),
+        "/loading": (context) => const LoadingScreen(),
       },
-      
+      //  "/info": (context) => const InfoScreen(),
+
       initialRoute: '/loading',
       //'/welcome',
       theme: ThemeData(
@@ -57,6 +55,4 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
-  
 }
-

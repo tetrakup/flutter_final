@@ -134,8 +134,7 @@ class _InfoScreenState extends State<InfoScreen> {
       storage.setString("password", passwordController.text);
       storage.setStringList("interest", interested);
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text(
             "Information Saved Successfully"), //kayıt butonuna basınca ilgili mesajı veren widget
         backgroundColor: Colors.green,
@@ -148,8 +147,7 @@ class _InfoScreenState extends State<InfoScreen> {
           },
         ),
       )); //renk özelliği
-    }
-     else {
+    } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text("Check your email adres"),

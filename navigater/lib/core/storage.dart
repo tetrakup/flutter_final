@@ -36,18 +36,18 @@ class Storage {
     storage.setString("phone_number", phone);
   }
 
-saveToken(String token) async{
+  saveToken(String token) async{
   final storage = new FlutterSecureStorage();
   await storage.write(key: "token", value: token);
 }
 
-loadToken() async{
+  loadToken() async{
   final storage = new FlutterSecureStorage();
   var token = await storage.read(key: "token");
   return token;
 }
 
-clearUser()async{//braya  geld. tüm bilg. shared_pref. e token'dan silinecek.
+  clearUser()async{//braya  geld. tüm bilg. shared_pref. e token'dan silinecek.
   SharedPreferences storage = await SharedPreferences.getInstance();
   final secureStorage = new FlutterSecureStorage();
 

@@ -10,6 +10,7 @@ class ProfileScreen extends StatelessWidget {
 
   ProfileScreen({required this.user});
 
+
   @override
   Widget build(BuildContext context) {
     final user =
@@ -78,6 +79,7 @@ class ProfileScreen extends StatelessWidget {
                 Gap(10),
                 ElevatedButton(
                   onPressed: () async {
+                    //logoutErrorMaterial();
                     Storage storage = Storage();
                     await storage.clearUser();
                     Navigator.of(context).pushReplacementNamed("/login");

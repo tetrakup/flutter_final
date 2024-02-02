@@ -33,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Text("Error"),
           ],
         ),
-        content: const Text("Invalid credentials check and try again"),
+        content: const Text("Invalid Credentials Check and Try Again"),
         actions: [
           CupertinoDialogAction(
             onPressed: () => Navigator.of(context).pop(),
@@ -156,7 +156,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           child: TextField(
                             controller: passwordController,
-
                             decoration: const InputDecoration(
                                 hintText: "Please, enter your password"),
                             obscureText:

@@ -1,7 +1,6 @@
 //sayfalar yüklenirkenki bekleme sayfasi için
 import 'package:flutter/material.dart';
 import 'package:navigater/core/storage.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class LoadingScreen extends StatefulWidget {
   const LoadingScreen({super.key});
