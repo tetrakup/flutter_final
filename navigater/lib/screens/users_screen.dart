@@ -69,7 +69,7 @@ class _UsersScreenState extends State<UsersScreen> {
   }
 
   //----------------------------------------------------------------
- /* loadUsers({int page = 1}) async {
+  /* loadUsers({int page = 1}) async {
     if (currentPage < 1 || currentPage > totalPages) {
       //eğer 1den küçük ve total sayfa sayısından büyükse
       return;
@@ -97,44 +97,44 @@ class _UsersScreenState extends State<UsersScreen> {
     }
   }*/
   loadUsers({int page = 1}) async {
-  if (currentPage < 1 || currentPage > totalPages) {
-    return;
-  }
-  setState(() {
-    loading = true;
-  });
-
-  API api = API();
-  var result = await api.getUsers(page: page);
-
-  if (result is Exception) {
-    showError(context as BuildContext); // Burada showError fonksiyonuna BuildContext parametresi geçiyoruz
+    if (currentPage < 1 || currentPage > totalPages) {
+      return;
+    }
     setState(() {
-      loading = false;
+      loading = true;
     });
-  } else {
-    setState(() {
-      currentPage = result["page"];
-      totalPages = result["total_pages"];
-      users = result["data"];
-      loading = false;
-    });
-    currentPage++;
+
+    API api = API();
+    var result = await api.getUsers(page: page);
+
+    if (result is Exception) {
+      showError(context
+          as BuildContext); // Burada showError fonksiyonuna BuildContext parametresi geçiyoruz
+      setState(() {
+        loading = false;
+      });
+    } else {
+      setState(() {
+        currentPage = result["page"];
+        totalPages = result["total_pages"];
+        users = result["data"];
+        loading = false;
+      });
+      //currentPage++;
+    }
   }
-}
 
-List<Widget> drawUsers() {
-  List<Widget> r = [];
+  List<Widget> drawUsers() {
+    List<Widget> r = [];
 
-  users.forEach((element) {
-    r.add(
-      UserTile(element: element),
-    );
-  });
+    users.forEach((element) {
+      r.add(
+        UserTile(element: element),
+      );
+    });
 
-  return r;
-}
-
+    return r;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -156,7 +156,7 @@ List<Widget> drawUsers() {
           child: Column(
             children: [
               if (loading) LinearProgressIndicator(),
-            if(!loading)...drawUsers(),
+              if (!loading) ...drawUsers(),
               Container(
                 margin: EdgeInsets.all(12.0),
                 padding: EdgeInsets.all(12.0),
@@ -168,21 +168,49 @@ List<Widget> drawUsers() {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     InkWell(
-                      onTap: () => loadUsers(page: currentPage - 1),
+                      onTap: currentPage == 1
+                          ? null
+                          : () {
+                              setState(() {
+                                loadUsers(page: currentPage - 1);
+                              });
+                            },
                       child: Icon(
                         Icons.arrow_left_sharp,
                         color: currentPage == 1
-                            ? Colors.grey.shade300
+                            ? Colors.red.shade500
                             : Colors.black,
                       ),
                     ),
-                    Text("$currentPage/$totalPages"),
+                    Text(
+                      "Press black arrows to view",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Gap(5),
+                    Text(
+                      "$currentPage/$totalPages",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ), //hng sayf. ve kaç sayfa var
                     InkWell(
-                      onTap: () => loadUsers(page: currentPage + 1),
+                      onTap: currentPage == totalPages
+                          ? null
+                          : () {
+                              setState(() {
+                                loadUsers(page: currentPage + 1);
+                              });
+                            },
                       child: Icon(
                         Icons.arrow_right_sharp,
                         color: currentPage == totalPages
-                            ? Colors.grey.shade300
+                            ? Colors.red.shade500
                             : Colors.black,
                       ),
                     ),

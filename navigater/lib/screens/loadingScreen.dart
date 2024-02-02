@@ -2,14 +2,14 @@
 import 'package:flutter/material.dart';
 import 'package:navigater/core/storage.dart';
 
-class LoadingScreen extends StatefulWidget {
-  const LoadingScreen({super.key});
+class loadingScreen extends StatefulWidget {
+  const loadingScreen({super.key});
 
   @override
-  State<LoadingScreen> createState() => _LoadingScreenState();
+  State<loadingScreen> createState() => _loadingScreenState();
 }
 
-class _LoadingScreenState extends State<LoadingScreen> {
+class _loadingScreenState extends State<loadingScreen> {
   checkLogin() async{
     Storage storage = Storage();
 

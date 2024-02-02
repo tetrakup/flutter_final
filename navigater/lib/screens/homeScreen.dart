@@ -205,7 +205,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: Colors.greenAccent,
                       ),
                       onTap: () {
-                        Navigator.pushNamed(context, "/Kategoriler");
+                        Navigator.pushNamed(context, "/kategoriler");
                         _selectedIndex = 1;
                       },
                     ),

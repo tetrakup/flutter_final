@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navigater/screens/Category.dart';
-import 'package:navigater/screens/loading.dart';
+import 'package:navigater/screens/loadingScreen.dart';
+import 'package:navigater/screens/writersScreen.dart';
 
 import 'screens/device_screen.dart';
 import 'screens/homeScreen.dart';
@@ -39,11 +40,13 @@ class MyApp extends StatelessWidget {
         '/welcome': (context) => const WelcomeScreen(),
         '/writers': (context) => writerScreen(),
         '/anaekran': (context) => BooksScreen(),
-        "/Kategoriler": (context) => const Kategoriler(),
+        "/kategoriler": (context) => const Kategoriler(),
         "/device": (context) => const DeviceScreen(),
         "/users": (context) => const UsersScreen(),
         "/devices": (context) => const DeviceScreen(),
-        "/loading": (context) => const LoadingScreen(),
+        "/loading": (context) => const loadingScreen(),
+        "/writ3rs": (context) => const writersScreen(),
+
       },
       //  "/info": (context) => const InfoScreen(),
 

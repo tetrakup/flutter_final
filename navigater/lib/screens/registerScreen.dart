@@ -173,10 +173,10 @@ class _InfoScreenState extends State<InfoScreen> {
 
   //IOS ıcın hafızayı sil
   clearStorageIOS() async {
-    showCupertinoDialog(
+    await showCupertinoDialog(
       context: context,
       barrierDismissible:
-          false, //buton dışında herhangi bi yere tıklanınca kapansın mı kapanmasın mı?
+          true, //buton dışında herhangi bi yere tıklanınca kapansın mı kapanmasın mı?
       builder: (context) => CupertinoAlertDialog(
         //dataları silmeden önce sorması için
         title: Row(
@@ -208,6 +208,7 @@ class _InfoScreenState extends State<InfoScreen> {
               emailController.text = "";
               passwordController.text = "";
               interested = [];
+              Navigator.of(context).pop(); // showDialog kapatma
             },
             child: Text("Yes"),
             isDestructiveAction: true,
