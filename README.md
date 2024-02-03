@@ -1,6 +1,6 @@
 # 📚 My Awesome Flutter Application
 ## Amaç
-::
+
 Bu uygulama, mobil programlama dersi kapsamında geliştirilmiştir. Kitap okuyucularıyla yazarları bir araya getirerek, kitapları ve yazarları keşfetmelerine olanak sağlamayı hedefler.
 Bu uygulama, kitap tutkunları için tasarlanmış, kullanıcı dostu bir Flutter uygulamasıdır. Uygulama içeriği aşağıdaki özellikleri içerir:
 
@@ -18,9 +18,9 @@ Bu uygulama, kitap tutkunları için tasarlanmış, kullanıcı dostu bir Flutte
   
 - **Kitap Kategorileri:** Farklı kitap kategorilerini keşfetmek için özel bir sayfa bulunmaktadır. Romanlar, kurgusal olmayan eserler, bilim kurgu ve daha fazlası burada bulunabilir.
 
-## 🛠️: Kullanılan Teknolojiler 
+## 🛠️ Kullanılan Teknolojiler 
 
-- **Flutter Framework:** Google tarafından geliştirilen açık kaynaklı bir framework olan Flutter, cross-platform (çoklu platform) mobil uygulama geliştirmek için kullanılmıştır. Flutter, hızlı ve etkili bir şekilde iOS ve Android uygulamaları oluşturmak için kullanılır.
+- :flutter: **Flutter Framework:** Google tarafından geliştirilen açık kaynaklı bir framework olan Flutter, cross-platform (çoklu platform) mobil uygulama geliştirmek için kullanılmıştır. Flutter, hızlı ve etkili bir şekilde iOS ve Android uygulamaları oluşturmak için kullanılır.
 
 - 🛡️ **flutter_secure_storage Kütüphanesi:** Kullanıcı kimlik bilgilerini güvenli bir şekilde saklamak için Flutter'ın "flutter_secure_storage" kütüphanesi kullanılmıştır. Bu kütüphane, kullanıcıların oturum açma bilgileri gibi hassas verileri güvenli bir şekilde cihazda depolamak için kullanılır.
 
@@ -61,7 +61,7 @@ Bu proje MIT lisansı altında lisanslanmıştır. Detaylı bilgi için [LICENSE
 
 ## Süper Ziyaretçi (SuperVisitor)
 
-✨:Keyvan Arasteh ([@keyvanarasteh](https://github.com/keyvanarasteh)) ✨
+✨Keyvan Arasteh ([@keyvanarasteh](https://github.com/keyvanarasteh)) ✨
 
 
 |       Programlama Dilleri ve Framework'ler       |         Platformlar         |
