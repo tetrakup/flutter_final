@@ -43,14 +43,14 @@ Bu uygulama, mobil programlama dersi kapsamında geliştirilen  kitap tutkunlar�
 
 | Öğrenci Ad Soyad      | Öğrenci Numarası | GitHub Kullanıcı Adı        |
 |-----------------------|------------------|----------------------------|
-| Suat Ceylan Atay      | 221216056        | [<img src="https://avatars.githubusercontent.com/u/97338156?v=4" width="110" height="110" alt="tetrakup">](https://github.com/tetrakup) <br> <span style="color:gray">tetrakup</span> |
-| Arda Emre Gül         | 229910001        | [<img src="https://avatars.githubusercontent.com/u/107351003?v=4" width="110" height="110" alt="ArxEmze">](https://github.com/ArxEmze) <br> <span style="color:gray">ArxEmze</span>    |
+| Suat Ceylan Atay      | 221216056        | [<img src="https://avatars.githubusercontent.com/u/97338156?v=4" width="110" height="110" alt="tetrakup">](https://github.com/tetrakup) <br> <span style="color:gray">@tetrakup</span> |
+| Arda Emre Gül         | 229910001        | [<img src="https://avatars.githubusercontent.com/u/107351003?v=4" width="110" height="110" alt="ArxEmze">](https://github.com/ArxEmze) <br> <span style="color:gray">@ArxEmze</span>    |
 
+## ✨ Süper Ziyaretçi (SuperVisitor) ✨
 
-
-## Süper Ziyaretçi (SuperVisitor)
-
-✨Keyvan Arasteh ([@keyvanarasteh](https://github.com/keyvanarasteh)) ✨
+| Ad Soyad             | GitHub                        |
+|----------------------|-------------------------------|
+| Keyvan Arasteh       | [<img src="https://avatars.githubusercontent.com/u/16303698?v=4" width="110" height="110" alt="keyvanarasteh">](https://github.com/keyvanarasteh) <br> @keyvanarasteh |
 
 
 |       Programlama Dilleri ve Framework'ler 🖥️    |         Platformlar 📱      |
