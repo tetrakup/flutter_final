@@ -2,7 +2,6 @@
 ## Amaç
 
 Bu uygulama, mobil programlama dersi kapsamında geliştirilmiştir. Kitap okuyucularıyla yazarları bir araya getirerek, kitapları ve yazarları keşfetmelerine olanak sağlamayı hedefler.
-
 Bu uygulama, kitap tutkunları için tasarlanmış, kullanıcı dostu bir Flutter uygulamasıdır. Uygulama içeriği aşağıdaki özellikleri içerir:
 
 ## Özellikler
@@ -30,8 +29,6 @@ Bu uygulama, kitap tutkunları için tasarlanmış, kullanıcı dostu bir Flutte
 - **Veritabanı Bağlantısı:** Uygulama henüz bir dış veritabanı ile bağlantı kurmamıştır. Veritabanı bağlantısı oluşturulduğunda bu bölüm güncellenecektir.
 
 - **RESTful API:** Uygulama, dış kaynaklardan kitap ve yazar verilerini çekmek için RESTful API'ler kullanmaktadır. Bu API'ler, [reqres.in](https://reqres.in/) ve [Postman](https://www.postman.com/) gibi platformlar üzerinde geliştirilmiştir. RESTful API'ler, uygulamanın dış kaynaklardan veri alışverişi yapmasını ve bu verileri kullanıcıya sunmasını sağlar.
-
-
 
 ## Kurulum
 
