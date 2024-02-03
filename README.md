@@ -2,8 +2,7 @@
 
 ## 🎯 Amaç
 
-Bu uygulama, mobil programlama dersi kapsamında geliştirilmiştir. Kitap okuyucularıyla yazarları bir araya getirerek, kitapları ve yazarları keşfetmelerine olanak sağlamayı hedefler.
-Bu uygulama, kitap tutkunları için tasarlanmış, kullanıcı dostu bir Flutter uygulamasıdır. Uygulama içeriği aşağıdaki özellikleri içerir:
+Bu uygulama, mobil programlama dersi kapsamında geliştirilen  kitap tutkunları için tasarlanmış, kullanıcı dostu bir Flutter uygulamasıdır. Kitap okuyucularıyla yazarları bir araya getirerek, kitapları ve yazarları keşfetmelerine olanak sağlamayı hedefler. Uygulama içeriği aşağıdaki özellikleri içerir:
 
 ## 💡 Features
 
