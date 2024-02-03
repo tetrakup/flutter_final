@@ -238,7 +238,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             ],
                           ),
                         ),
-                        //daha sonra sileceğim writersbuton
                     ElevatedButton(
                       onPressed: () {
                         //Navigator.pushNamed(context, '/writ3rs');
@@ -261,6 +260,30 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                     ),
+                    //books
+                                        ElevatedButton(
+                      onPressed: () {
+                        //Navigator.pushNamed(context, '/writ3rs');
+                        Navigator.pushNamed(context, '/thebook');
+                      },
+                      child: Row(
+                        children: [
+                          SvgPicture.asset(
+                            "assets/icons/writer.svg",
+                            height: 30,
+                            colorFilter: ColorFilter.mode(
+                              Colors.white60,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text("Books"),
+                        ],
+                      ),
+                    ),
+                    //books
                     //6.menuitem logout
                     const Divider(),
                     ElevatedButton(

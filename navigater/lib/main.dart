@@ -13,6 +13,7 @@ import 'screens/users_screen.dart';
 import 'screens/writerScreen.dart';
 import 'screens/welcomeScreen.dart';
 import 'screens/booksScreen.dart';
+import 'screens/bookScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -45,6 +46,8 @@ class MyApp extends StatelessWidget {
         "/devices": (context) => const DeviceScreen(),
         "/loading": (context) => const loadingScreen(),
         "/writers": (context) => PostListPage(),
+        "/thebook": (context) => BookScreen(),
+
       },
       //  "/info": (context) => const InfoScreen(),
 
