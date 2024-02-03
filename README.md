@@ -14,8 +14,9 @@ Bu uygulama, mobil programlama dersi kapsamında geliştirilmiştir. Kitap okuyu
 
 | Öğrenci Ad Soyad      | Öğrenci Numarası | GitHub Kullanıcı Adı        |
 |-----------------------|------------------|----------------------------|
-| Suat Ceylan Atay      | 221216056        | [tetrakup](https://github.com/tetrakup) ![tetrakup](https://avatars.githubusercontent.com/u/97338156?v=4) |
-| Arda Emre Gül         | 229910001        | [ArxEmze](https://github.com/ArxEmze) ![ArxEmze](https://avatars.githubusercontent.com/u/107351003?v=4)    |
+| Suat Ceylan Atay      | 221216056        | [tetrakup](https://github.com/tetrakup) <img src="https://avatars.githubusercontent.com/u/97338156?v=4" width="120" height="120"> |
+| Arda Emre Gül         | 229910001        | [ArxEmze](https://github.com/ArxEmze) <img src="https://avatars.githubusercontent.com/u/107351003?v=4" width="120" height="120">    |
+
 
 
 
