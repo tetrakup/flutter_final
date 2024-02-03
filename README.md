@@ -12,12 +12,11 @@ Bu uygulama, mobil programlama dersi kapsamında geliştirilmiştir. Kitap okuyu
 
 ## Takım Üyeleri
 
-╔════════════════════════════════════════════════════════════════════════════════════╗
-║               Öğrenci Ad Soyad - Öğrenci Numarası - GitHub Kullanıcı Adı                ║
-╠════════════════════════════════════════════════════════════════════════════════════╣
-║ Suat Ceylan Atay - 221216056 - [tetrakup](https://github.com/tetrakup)               ║
-║ Arda Emre Gül - 229910001 - [ArxEmze](https://github.com/ArxEmze)                     ║
-╚════════════════════════════════════
+| Öğrenci Ad Soyad      | Öğrenci Numarası | GitHub Kullanıcı Adı        |
+|-----------------------|------------------|----------------------------|
+| Suat Ceylan Atay      | 221216056        | [tetrakup](https://github.com/tetrakup)  |
+| Arda Emre Gül         | 229910001        | [ArxEmze](https://github.com/ArxEmze)     |
+
 
 
 ## Süper Ziyaretçi (SuperVisitor)
