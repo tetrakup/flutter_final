@@ -22,7 +22,7 @@ Bu uygulama, kitap tutkunları için tasarlanmış, kullanıcı dostu bir Flutte
 
 ## 🛠️ Kullanılan Teknolojiler 
 
-- :flutter: **Flutter Framework:** Google tarafından geliştirilen açık kaynaklı bir framework olan Flutter, cross-platform (çoklu platform) mobil uygulama geliştirmek için kullanılmıştır. Flutter, hızlı ve etkili bir şekilde iOS ve Android uygulamaları oluşturmak için kullanılır.
+- **Flutter Framework:** Google tarafından geliştirilen açık kaynaklı bir framework olan Flutter, cross-platform (çoklu platform) mobil uygulama geliştirmek için kullanılmıştır. Flutter, hızlı ve etkili bir şekilde iOS ve Android uygulamaları oluşturmak için kullanılır.
 
 - 🛡️ **flutter_secure_storage Kütüphanesi:** Kullanıcı kimlik bilgilerini güvenli bir şekilde saklamak için Flutter'ın "flutter_secure_storage" kütüphanesi kullanılmıştır. Bu kütüphane, kullanıcıların oturum açma bilgileri gibi hassas verileri güvenli bir şekilde cihazda depolamak için kullanılır.
 
