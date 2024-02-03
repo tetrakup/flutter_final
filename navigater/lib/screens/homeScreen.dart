@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:navigater/core/storage.dart';
-import 'package:navigater/widgets/menuItem.dart';
 import 'package:navigater/widgets/profileItem.dart';
 
 //import '../widgets/menuItem.dart';
@@ -179,31 +178,32 @@ class _HomeScreenState extends State<HomeScreen> {
                     const Divider(
                       height: 5,
                     ),
-                        ElevatedButton(
-                          onPressed: () {
-                            //Navigator.pushNamed(context, '/writ3rs');
-                            Navigator.pushNamed(context, '/anaekran');
-                          },
-                          child: Row(
-                            children: [
-                              SvgPicture.asset(
-                                "assets/icons/home.svg",
-                                height: 30,
-                                colorFilter: ColorFilter.mode(
-                                  Colors.white60,
-                                  BlendMode.srcIn,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text("Home Screen"),
-                            ],
+                    ElevatedButton(
+                      onPressed: () {
+                        //Navigator.pushNamed(context, '/writ3rs');
+                        Navigator.pushNamed(context, '/anaekran');
+                      },
+                      child: Row(
+                        children: [
+                          SvgPicture.asset(
+                            "assets/icons/home.svg",
+                            height: 30,
+                            colorFilter: ColorFilter.mode(
+                              Colors.white60,
+                              BlendMode.srcIn,
+                            ),
                           ),
-                        ),
-                        //daha sonra sileceğim writersbuton
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text("Home Screen"),
+                        ],
+                      ),
+                    ),
+                    Gap(5),
+                    //daha sonra sileceğim writersbuton
                     //2.menuıtem
-                   /* MenuItem(
+                    /* MenuItem(
                       title: "Categories",
                       icon: const Icon(
                         Icons.book_online_outlined,
@@ -215,29 +215,30 @@ class _HomeScreenState extends State<HomeScreen> {
                         _selectedIndex = 1;
                       },
                     ),*/
-                                            //daha sonra sileceğim writersbuton
-                        ElevatedButton(
-                          onPressed: () {
-                            //Navigator.pushNamed(context, '/writ3rs');
-                            Navigator.pushNamed(context, '/kategoriler');
-                          },
-                          child: Row(
-                            children: [
-                              SvgPicture.asset(
-                                "assets/icons/categories.svg",
-                                height: 20,
-                                colorFilter: ColorFilter.mode(
-                                  Colors.white60,
-                                  BlendMode.srcIn,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text("Categories"),
-                            ],
+                    //daha sonra sileceğim writersbuton
+                    ElevatedButton(
+                      onPressed: () {
+                        //Navigator.pushNamed(context, '/writ3rs');
+                        Navigator.pushNamed(context, '/kategoriler');
+                      },
+                      child: Row(
+                        children: [
+                          SvgPicture.asset(
+                            "assets/icons/categories.svg",
+                            height: 20,
+                            colorFilter: ColorFilter.mode(
+                              Colors.white60,
+                              BlendMode.srcIn,
+                            ),
                           ),
-                        ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text("Categories"),
+                        ],
+                      ),
+                    ),
+                    Gap(5),
                     ElevatedButton(
                       onPressed: () {
                         //Navigator.pushNamed(context, '/writ3rs');
@@ -260,16 +261,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         ],
                       ),
                     ),
-                    //books
-                                        ElevatedButton(
+                    Gap(5),
+                    ElevatedButton(
                       onPressed: () {
-                        //Navigator.pushNamed(context, '/writ3rs');
                         Navigator.pushNamed(context, '/thebook');
                       },
                       child: Row(
                         children: [
                           SvgPicture.asset(
-                            "assets/icons/writer.svg",
+                            "assets/icons/book.svg",
                             height: 30,
                             colorFilter: ColorFilter.mode(
                               Colors.white60,

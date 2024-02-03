@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navigater/screens/Category.dart';
 import 'package:navigater/screens/loadingScreen.dart';
-import 'package:navigater/screens/writersScreen.dart';
 
 import 'screens/device_screen.dart';
 import 'screens/homeScreen.dart';
@@ -11,7 +10,6 @@ import 'screens/profileScreen.dart';
 import 'screens/registerScreen.dart';
 import 'screens/users_screen.dart';
 import 'screens/writerScreen.dart';
-import 'screens/welcomeScreen.dart';
 import 'screens/booksScreen.dart';
 import 'screens/bookScreen.dart';
 
@@ -38,7 +36,6 @@ class MyApp extends StatelessWidget {
         '/profile': (context) => ProfileScreen(
               user: const {},
             ),
-        '/welcome': (context) => const WelcomeScreen(),
         '/anaekran': (context) => BooksScreen(),
         "/kategoriler": (context) => const Kategoriler(),
         "/device": (context) => const DeviceScreen(),
@@ -52,7 +49,6 @@ class MyApp extends StatelessWidget {
       //  "/info": (context) => const InfoScreen(),
 
       initialRoute: '/loading',
-      //'/welcome',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
