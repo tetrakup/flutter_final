@@ -5,6 +5,7 @@ Bu uygulama, mobil programlama dersi kapsamında geliştirilmiştir. Kitap okuyu
 Bu uygulama, kitap tutkunları için tasarlanmış, kullanıcı dostu bir Flutter uygulamasıdır. Uygulama içeriği aşağıdaki özellikleri içerir:
 
 ## Özellikler
+[!(https://skillicons.dev/icons?i=flutter&perline=3)](https://skillicons.dev)
 
 - **Kayıt, Giriş ve Çıkış İşlemleri:** Kullanıcılar uygulamaya kayıt olabilir, giriş yapabilir ve istedikleri zaman çıkış yapabilirler.
   
