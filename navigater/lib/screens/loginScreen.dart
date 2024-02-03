@@ -184,29 +184,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             ],
                           ),
                         ),
-                        //daha sonra sileceğim writersbuton
-                        ElevatedButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/writ3rs');
-                          },
-                          child: Row(
-                            children: [
-                              SvgPicture.asset(
-                                "assets/icons/login.svg",
-                                height: 30,
-                                colorFilter: ColorFilter.mode(
-                                  Colors.white60,
-                                  BlendMode.srcIn,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text("writers"),
-                            ],
-                          ),
-                        ),
-                        //daha sonra sileceğim writersbuton
                         Gap(8),
                         //hala üye degil misin?üye ol.
                         ElevatedButton(

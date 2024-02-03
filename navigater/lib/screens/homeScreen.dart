@@ -31,7 +31,6 @@ class _HomeScreenState extends State<HomeScreen> {
     "email": "",
   };
 
-
   //logout error
   logOut() {
     if (kIsWeb) {
@@ -158,46 +157,53 @@ class _HomeScreenState extends State<HomeScreen> {
         drawer: Drawer(
           child: Column(
             children: [
-              // Column(
-              //   crossAxisAlignment: CrossAxisAlignment.start,
-              //   children: [
-              //     Text("Name: ${user["name"]}"),
-              //     Text("Email: ${user["email"]}"),
-              //     Text("Phone: ${user["phone_number"]}"),
-              //     Text("id: ${user["id"]}"),
-              //   ],
-              //   ),
-              ProfileItem(
-                avatar: 'assets/images/avatar.jpg',
-                name: "Ceylan Atay",
-                // onTap: () {
-                //   Navigator.pushNamed(context, "/profile");
-                // },
-                onTap: () {
-                  Navigator.pushNamed(context, "/profile", arguments: user);
-                },
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ProfileItem(
+                    avatar: 'assets/images/avatar.jpg',
+                    name: "Ceylan Atay",
+                    // onTap: () {
+                    //   Navigator.pushNamed(context, "/profile");
+                    // },
+                    onTap: () {
+                      Navigator.pushNamed(context, "/profile", arguments: user);
+                    },
+                  ),
+                ],
               ),
+              Gap(5),
               Expanded(
                 child: Column(
                   children: [
                     const Divider(
                       height: 5,
                     ),
-                    MenuItem(
-                      title: "Home Screen",
-                      icon: const Icon(
-                        Icons.home,
-                        size: 20,
-                        color: Colors.greenAccent,
-                      ),
-                      onTap: () {
-                        Navigator.pushNamed(
-                            context, "/anaekran"); //sonradan ekledim
-                        _selectedIndex = 0;
-                      },
-                    ),
+                        ElevatedButton(
+                          onPressed: () {
+                            //Navigator.pushNamed(context, '/writ3rs');
+                            Navigator.pushNamed(context, '/anaekran');
+                          },
+                          child: Row(
+                            children: [
+                              SvgPicture.asset(
+                                "assets/icons/home.svg",
+                                height: 30,
+                                colorFilter: ColorFilter.mode(
+                                  Colors.white60,
+                                  BlendMode.srcIn,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text("Home Screen"),
+                            ],
+                          ),
+                        ),
+                        //daha sonra sileceğim writersbuton
                     //2.menuıtem
-                    MenuItem(
+                   /* MenuItem(
                       title: "Categories",
                       icon: const Icon(
                         Icons.book_online_outlined,
@@ -208,34 +214,55 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.pushNamed(context, "/kategoriler");
                         _selectedIndex = 1;
                       },
-                    ),
-                    //3.menuitem
-                    MenuItem(
-                      title: "writers",
-                      icon: const Icon(
-                        Icons.person_2,
-                        size: 20,
-                        color: Colors.greenAccent,
-                      ),
-                      onTap: () {
-                        Navigator.pushNamed(context, "/writers");
+                    ),*/
+                                            //daha sonra sileceğim writersbuton
+                        ElevatedButton(
+                          onPressed: () {
+                            //Navigator.pushNamed(context, '/writ3rs');
+                            Navigator.pushNamed(context, '/kategoriler');
+                          },
+                          child: Row(
+                            children: [
+                              SvgPicture.asset(
+                                "assets/icons/categories.svg",
+                                height: 20,
+                                colorFilter: ColorFilter.mode(
+                                  Colors.white60,
+                                  BlendMode.srcIn,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text("Categories"),
+                            ],
+                          ),
+                        ),
+                        //daha sonra sileceğim writersbuton
+                    ElevatedButton(
+                      onPressed: () {
+                        //Navigator.pushNamed(context, '/writ3rs');
+                        Navigator.pushNamed(context, '/writers');
                       },
-                    ),
-                    const Divider(
-                      height: 5,
-                      color: Colors.greenAccent,
+                      child: Row(
+                        children: [
+                          SvgPicture.asset(
+                            "assets/icons/writer.svg",
+                            height: 30,
+                            colorFilter: ColorFilter.mode(
+                              Colors.white60,
+                              BlendMode.srcIn,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text("Writers"),
+                        ],
+                      ),
                     ),
                     //6.menuitem logout
                     const Divider(),
-                    /* ElevatedButton(
-                  onPressed: () async{
-                    Storage storage = Storage();
-                    await storage.clearUser();
-                    Navigator.of(context).pushReplacementNamed("/login");
-                  },
-                  child: Text("Logout"),
-                ),*/
-                    //elevatedbutton deneme baslangic
                     ElevatedButton(
                       onPressed: () async {
                         logoutErrorMaterial();

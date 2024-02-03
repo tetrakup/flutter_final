@@ -322,6 +322,7 @@ class _InfoScreenState extends State<InfoScreen> {
             ),
           ),
         ], //AppBar'ın bir özelliği. aksiyon-liste
+        
       ),
       body: SafeArea(
         child: Padding(
@@ -329,6 +330,7 @@ class _InfoScreenState extends State<InfoScreen> {
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              
               children: [
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),

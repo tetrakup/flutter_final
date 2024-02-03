@@ -38,15 +38,13 @@ class MyApp extends StatelessWidget {
               user: const {},
             ),
         '/welcome': (context) => const WelcomeScreen(),
-        '/writers': (context) => writerScreen(),
         '/anaekran': (context) => BooksScreen(),
         "/kategoriler": (context) => const Kategoriler(),
         "/device": (context) => const DeviceScreen(),
         "/users": (context) => const UsersScreen(),
         "/devices": (context) => const DeviceScreen(),
         "/loading": (context) => const loadingScreen(),
-        "/writ3rs": (context) => const writersScreen(),
-
+        "/writers": (context) => PostListPage(),
       },
       //  "/info": (context) => const InfoScreen(),
 

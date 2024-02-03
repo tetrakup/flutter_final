@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart'; //flutter svg desteklemediği için svg. destk. lib.
+import 'package:flutter_svg/flutter_svg.dart';
+//flutter svg desteklemediği için svg. destk. lib.
 
 void main() {
   runApp(BooksScreen());
@@ -138,7 +139,7 @@ class BooksScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: const EdgeInsets.all(2.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -225,7 +226,7 @@ class BooksScreen extends StatelessWidget {
                   ),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
-                    child: Row(
+                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         CategoryItem("Science Fiction"),
                         CategoryItem("Mystery"),
@@ -367,9 +368,10 @@ class BooksScreen extends StatelessWidget {
               width: double.infinity,
               height: 60,
               color: const Color.fromRGBO(33, 33, 33, 1),
-              child: const Padding(
+              child: const 
+               Padding(
                 padding: EdgeInsets.all(8.0),
-                child: Row(
+               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Column(
