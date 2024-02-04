@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navigater/screens/Category.dart';
 import 'package:navigater/screens/loadingScreen.dart';
+import 'package:navigater/screens/onboardingScreen.dart';
 
 import 'screens/device_screen.dart';
 import 'screens/homeScreen.dart';
@@ -44,11 +45,13 @@ class MyApp extends StatelessWidget {
         "/loading": (context) => const loadingScreen(),
         "/writers": (context) => PostListPage(),
         "/thebook": (context) => BookScreen(),
+        "/start": (context) => OnBoardingScreen(),
 
       },
       //  "/info": (context) => const InfoScreen(),
+      initialRoute: '/start',
 
-      initialRoute: '/loading',
+     // initialRoute: '/loading',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
