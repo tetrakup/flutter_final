@@ -1,4 +1,3 @@
-
 class OnBoardingEntity {
   final String? image;
   final String? title;
@@ -8,19 +7,23 @@ class OnBoardingEntity {
 
   static List<OnBoardingEntity> onBoardingData = [
     OnBoardingEntity(
-        image: "onboarding_1.png",
-        title: "On demand & runtime\nlocation",
-        description: "Pick from your location at\nyour preferred date\nand time."
+      image: "assets/images/welcome.jpg",
+      title: "Kitap Dünyasına Adım Atın",
+      description:
+          "En popüler kitapları ve öne çıkan yazarları keşfedin! Sizi bekleyen macera dolu dünyayı keşfedin!",
     ),
     OnBoardingEntity(
-        image: "onboarding_2.png",
-        title: "Anything, anytime,\nanywhere.",
-        description: "Whether it's a parcel, a cheque or\nan important doc, we'll parcel."
+      image: "assets/images/welcome.jpg",
+      title: "Yazarların İzinde",
+      description:
+          "Dünya genelindeki yazarların eşsiz dünyalarını ziyaret edin. Onların hayatları ve eserleriyle tanışın!",
     ),
     OnBoardingEntity(
-        image: "onboarding_3.png",
-        title: "Live track\nyour shipments",
-        description: "See a realtime view of your courier\non the map on the day of delivery."
+      image: "assets/images/welcome.jpg",
+
+      title: "Kategorilere Yolculuk",
+      description:
+          "Farklı kategorilerdeki binlerce kitabı keşfedin. Heyecan verici kitaplar sizi bekliyor!",
     ),
   ];
 }

@@ -24,11 +24,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           margin: const EdgeInsets.symmetric(vertical: 80),
           child: Column(
             children: [
-              Image.asset("assets/word_app_logo.png"),
+              Image.asset("assets/images/welcome.jpg"),
               const SizedBox(
-                height: 130,
+                height: 110,
               ),
-              Image.asset("assets/${onBoardingData[index].image}"),
+               //             Image.asset("assets/images/welcome.jpg"),
+
+              //Image.asset("assets/${onBoardingData[index].image}"),
               const SizedBox(
                 height: 40,
               ),
@@ -137,7 +139,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       Text(
-        "Get Started",
+        "Join Us",
         style: TextStyle(
           fontSize: 16,
         ),
