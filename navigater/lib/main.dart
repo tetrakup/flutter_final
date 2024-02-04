@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navigater/screens/Category.dart';
 import 'package:navigater/screens/loadingScreen.dart';
-import 'package:navigater/screens/writersScreen.dart';
 
 import 'screens/device_screen.dart';
 import 'screens/homeScreen.dart';
@@ -11,8 +10,8 @@ import 'screens/profileScreen.dart';
 import 'screens/registerScreen.dart';
 import 'screens/users_screen.dart';
 import 'screens/writerScreen.dart';
-import 'screens/welcomeScreen.dart';
 import 'screens/booksScreen.dart';
+import 'screens/bookScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,21 +36,19 @@ class MyApp extends StatelessWidget {
         '/profile': (context) => ProfileScreen(
               user: const {},
             ),
-        '/welcome': (context) => const WelcomeScreen(),
-        '/writers': (context) => writerScreen(),
         '/anaekran': (context) => BooksScreen(),
         "/kategoriler": (context) => const Kategoriler(),
         "/device": (context) => const DeviceScreen(),
         "/users": (context) => const UsersScreen(),
         "/devices": (context) => const DeviceScreen(),
         "/loading": (context) => const loadingScreen(),
-        "/writ3rs": (context) => const writersScreen(),
+        "/writers": (context) => PostListPage(),
+        "/thebook": (context) => BookScreen(),
 
       },
       //  "/info": (context) => const InfoScreen(),
 
       initialRoute: '/loading',
-      //'/welcome',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,

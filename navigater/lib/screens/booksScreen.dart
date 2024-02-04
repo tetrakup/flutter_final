@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart'; //flutter svg desteklemediği için svg. destk. lib.
+import 'package:flutter_svg/flutter_svg.dart';
+//flutter svg desteklemediği için svg. destk. lib.
 
 void main() {
   runApp(BooksScreen());
@@ -138,7 +139,7 @@ class BooksScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: const EdgeInsets.all(2.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -226,6 +227,7 @@ class BooksScreen extends StatelessWidget {
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         CategoryItem("Science Fiction"),
                         CategoryItem("Mystery"),
@@ -273,7 +275,7 @@ class BooksScreen extends StatelessWidget {
                             Container(
                               padding: const EdgeInsets.only(
                                   top: 3.0,
-                                  bottom: 3,
+                                  bottom: 5,
                                   right: 9,
                                   left: 9), //burası
                               decoration: BoxDecoration(
@@ -311,10 +313,10 @@ class BooksScreen extends StatelessWidget {
                         ),
 
                         const SizedBox(
-                          height: 20,
+                          height: 40,
                         ),
                         const SizedBox(
-                          height: 20,
+                          height: 40,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -363,13 +365,14 @@ class BooksScreen extends StatelessWidget {
               ),
             ),
             //3.kutu
-            Container(
+            /*Container(
               width: double.infinity,
               height: 60,
               color: const Color.fromRGBO(33, 33, 33, 1),
-              child: const Padding(
+              child: const 
+               Padding(
                 padding: EdgeInsets.all(8.0),
-                child: Row(
+               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Column(
@@ -454,7 +457,7 @@ class BooksScreen extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
+            ),*/
           ],
         ),
       ),

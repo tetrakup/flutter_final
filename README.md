@@ -4,7 +4,10 @@
 
 Bu uygulama, mobil programlama dersi kapsamında geliştirilen  kitap tutkunları için tasarlanmış, kullanıcı dostu bir Flutter uygulamasıdır. Kitap okuyucularıyla yazarları bir araya getirerek, kitapları ve yazarları keşfetmelerine olanak sağlamayı hedefler. Uygulama içeriği aşağıdaki özellikleri içerir:
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6661d235b297d6ebf1ffd4ca8af19ac6fe90758e
 ## 💡 Features
 
 - 👤 **Kayıt, Giriş ve Çıkış İşlemleri:** Kullanıcılar uygulamaya kayıt olabilir, giriş yapabilir ve istedikleri zaman çıkış yapabilirler.
