@@ -116,6 +116,14 @@ class _LoginScreenState extends State<LoginScreen> {
             ? const Center(child: CircularProgressIndicator())
             : Column(
                 children: [
+                  SvgPicture.asset(
+                    "assets/icons/book.svg",
+                    height: 130,
+                    colorFilter: ColorFilter.mode(
+                      Colors.blueGrey,
+                      BlendMode.srcIn,
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(18.0),
                     child: Column(

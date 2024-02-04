@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart'; //cupertinoswtich için kütüphane
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:shared_preferences/shared_preferences.dart'; //hafizayi okuma fonk. için kütüphane
 import 'dart:io'
@@ -305,24 +306,73 @@ class _InfoScreenState extends State<InfoScreen> {
       appBar: AppBar(
         title: const Text("REGISTER"),
         actions: [
+          //
           InkWell(
-            onTap: clearStorageMaterial,
+            onTap: () => Navigator.of(context).pushNamed("/login"),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Icon(Icons.delete),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    "assets/icons/turnleft.svg",
+                    height: 15,
+                    colorFilter:
+                        ColorFilter.mode(Colors.blueGrey, BlendMode.srcIn),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(right: 15),
+                    child: const Text(
+                      'Back',
+                      style: TextStyle(color: Colors.white,fontStyle: FontStyle.italic),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-          Gap(3),
-          InkWell(
-            //tiklandiginda writestoage fonk. calistiran buton haline geldi
-            onTap: writeStorage,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Icon(Icons.save),
+          //
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+            decoration: BoxDecoration(
+              color: Colors.blueGrey.shade800,
+              borderRadius: BorderRadius.circular(25),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  onTap: clearStorageMaterial,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(Icons.delete),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Gap(5),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+            decoration: BoxDecoration(
+              color: Colors.blueGrey.shade800,
+              borderRadius: BorderRadius.circular(25),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  //tiklandiginda writestoage fonk. calistiran buton haline geldi
+                  onTap: writeStorage,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(Icons.save),
+                  ),
+                ),
+              ],
             ),
           ),
         ], //AppBar'ın bir özelliği. aksiyon-liste
-        
       ),
       body: SafeArea(
         child: Padding(
@@ -330,12 +380,28 @@ class _InfoScreenState extends State<InfoScreen> {
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              
               children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SvgPicture.asset(
+                        "assets/icons/register.svg",
+                        height: 130,
+                        colorFilter: ColorFilter.mode(
+                          Colors.blueGrey,
+                          BlendMode.srcIn,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Gap(15),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
                   decoration: BoxDecoration(
-                    color: Colors.teal.shade200,
+                    color: Colors.blueGrey,
                     borderRadius: BorderRadius.circular(25),
                   ),
                   child: Row(
@@ -356,7 +422,7 @@ class _InfoScreenState extends State<InfoScreen> {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
                   decoration: BoxDecoration(
-                    color: Colors.teal.shade200,
+                    color: Colors.blueGrey,
                     borderRadius: BorderRadius.circular(25),
                   ),
                   child: Row(
@@ -381,7 +447,7 @@ class _InfoScreenState extends State<InfoScreen> {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
                   decoration: BoxDecoration(
-                    color: Colors.teal.shade200,
+                    color: Colors.blueGrey,
                     borderRadius: BorderRadius.circular(25),
                   ),
                   child: Row(
@@ -403,7 +469,7 @@ class _InfoScreenState extends State<InfoScreen> {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
                   decoration: BoxDecoration(
-                    color: Colors.teal.shade200,
+                    color: Colors.blueGrey,
                     borderRadius: BorderRadius.circular(25),
                   ),
                   child: Row(
@@ -428,7 +494,7 @@ class _InfoScreenState extends State<InfoScreen> {
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
                   decoration: BoxDecoration(
-                    color: Colors.teal.shade200,
+                    color: Colors.blueGrey,
                     borderRadius: BorderRadius.circular(25),
                   ),
                   child: Row(
