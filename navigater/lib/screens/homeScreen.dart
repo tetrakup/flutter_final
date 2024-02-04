@@ -148,7 +148,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 fontStyle: FontStyle.italic, // İtalik stil),
               )),
         ),
-
         body: _widgetOptions.elementAt(_selectedIndex));
   }
 }

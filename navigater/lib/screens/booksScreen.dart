@@ -1,6 +1,11 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
+import 'package:navigater/core/storage.dart';
 import 'package:navigater/widgets/profileItem.dart';
 //flutter svg desteklemediği için svg. destk. lib.
 
@@ -8,15 +13,117 @@ void main() {
   runApp(BooksScreen());
 }
 
-class BooksScreen extends StatelessWidget {
+class BooksScreen extends StatefulWidget {
   BooksScreen({super.key});
 
+  @override
+  State<BooksScreen> createState() => _BooksScreenState();
+}
+
+class _BooksScreenState extends State<BooksScreen> {
   Map<String, dynamic> user = {
     "name": "",
     "id": -1,
     "phone_number": "",
     "email": "",
   };
+  //logout error
+  logOut() {
+    if (kIsWeb) {
+      logoutError();
+    } else {
+      if (Platform.isIOS || Platform.isMacOS) {
+        logoutError();
+      } else {
+        logoutErrorMaterial();
+      }
+    }
+  }
+  //
+
+//ios logouterror
+  logoutError() async {
+    showCupertinoDialog(
+      context: context,
+      barrierDismissible:
+          false, //buton dışında herhangi bi yere tıklanınca kapansın mı kapanmasın mı?
+      builder: (context) => CupertinoAlertDialog(
+        //dataları silmeden önce sorması için
+        title: Row(
+          children: [
+            Icon(
+              Icons.warning,
+              color: Colors.teal.shade200,
+            ),
+            Gap(12.0),
+            Text("Confirmation"),
+          ],
+        ),
+        content: Text("Are you sure you want to logout?"),
+        actions: [
+          CupertinoDialogAction(
+            onPressed: () async {
+              Storage storage = Storage();
+              await storage.clearUser();
+              Navigator.of(context).pushReplacementNamed("/login");
+            },
+            child: Text("Yes"),
+            isDestructiveAction: true,
+          ),
+          CupertinoDialogAction(
+            onPressed: () => Navigator.of(context).pop(),
+            child: Text("No"),
+          ),
+        ],
+      ),
+    );
+  } //show dialog bitis
+
+//matteral logouterror
+  logoutErrorMaterial() async {
+    showDialog(
+      context: context,
+      barrierDismissible:
+          false, //buton dışında herhangi bi yere tıklanınca kapansın mı kapanmasın mı?
+      builder: (context) => AlertDialog(
+        //cikis yapmadan önce sorması için
+        title: Row(
+          children: [
+            Icon(Icons.warning),
+            Gap(12.0),
+            Text("Confirmation"),
+          ],
+        ),
+        content: Text("Are you sure you want to logout?"),
+        actions: [
+          ElevatedButton(
+              onPressed: () async {
+                Storage storage = Storage();
+                await storage.clearUser();
+                Navigator.of(context).pushReplacementNamed("/login");
+              },
+              child: Text("Yes")),
+          ElevatedButton(
+              onPressed: () => Navigator.of(context).pop(), child: Text("No")),
+        ],
+      ),
+    ); //show dialog bitis
+  }
+
+//logout error
+  checkLogin() async {
+    Storage storage = Storage();
+
+    final user = await storage.loadUser();
+
+    if (user != null) {
+      setState(() {
+        this.user = user; //this kull. sebebi sinifin user'ı old. belirtmek.
+      });
+    } else {
+      Navigator.pushReplacementNamed(context, "/login");
+    }
+  }
 
   final List<Map<String, String>> books = [
     {
@@ -40,6 +147,7 @@ class BooksScreen extends StatelessWidget {
       "writer": "Lev Tolstoy",
     },
   ];
+
   final List<Map<String, String>> books2 = [
     {
       "photo": "assets/images/kitap5.jpg",
@@ -319,9 +427,9 @@ class BooksScreen extends StatelessWidget {
                   const Divider(),
                   ElevatedButton(
                     onPressed: () async {
-                      // logoutErrorMaterial();
-                      //Storage storage = Storage();
-                      //await storage.clearUser();
+                       logoutErrorMaterial();
+                      Storage storage = Storage();
+                      await storage.clearUser();
                       //Navigator.of(context).pushReplacementNamed("/login");
                     },
                     child: Row(
@@ -501,11 +609,10 @@ class BooksScreen extends StatelessWidget {
                           Container(
                             decoration: BoxDecoration(
                               color: Colors.blueGrey, // arka plan rengi
-                              borderRadius: BorderRadius.circular(
-                                  10), //köşe yuvarlaklıgi
+                              borderRadius:
+                                  BorderRadius.circular(10), //köşe yuvarlaklıgi
                             ),
-                            padding: EdgeInsets.all(
-                                10), // bosluk kbırama
+                            padding: EdgeInsets.all(10), // bosluk kbırama
                             child: Text(
                               "Popular Books",
                               style: TextStyle(
