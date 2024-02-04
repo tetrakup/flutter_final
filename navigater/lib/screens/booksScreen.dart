@@ -86,6 +86,29 @@ class BooksScreen extends StatelessWidget {
     },
   ];
 
+  final List<Map<String, String>> books4 = [
+    {
+      "photo": "assets/images/kitap13.jpg",
+      "bookName": "Harry Potter ",
+      "writer": "J.K. Rowling",
+    },
+    {
+      "photo": "assets/images/kitap14.jpg",
+      "bookName": "To Kill a Mockingbird",
+      "writer": "Harper Lee",
+    },
+    {
+      "photo": "assets/images/kitap15.jpg",
+      "bookName": "1984",
+      "writer": "George Orwell",
+    },
+    {
+      "photo": "assets/images/kitap16.jpg",
+      "bookName": "The Great Gatsby",
+      "writer": "F. Scott Fitzgerald",
+    },
+  ];
+
   List<Widget> bookList() {
     List<Widget> t = [];
 
@@ -113,6 +136,17 @@ class BooksScreen extends StatelessWidget {
 
     for (var element in books3) {
       t.add(BookList3(
+          element["photo"]!, element["bookName"]!, element["writer"]!));
+    }
+
+    return t;
+  }
+
+  List<Widget> bookList4() {
+    List<Widget> t = [];
+
+    for (var element in books4) {
+      t.add(BookList4(
           element["photo"]!, element["bookName"]!, element["writer"]!));
     }
 
@@ -179,9 +213,6 @@ class BooksScreen extends StatelessWidget {
                 ProfileItem(
                   avatar: 'assets/images/avatar.jpg',
                   name: "Ceylan Atay",
-                  // onTap: () {
-                  //   Navigator.pushNamed(context, "/profile");
-                  // },
                   onTap: () {
                     Navigator.pushNamed(context, "/profile", arguments: user);
                   },
@@ -197,7 +228,6 @@ class BooksScreen extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      //Navigator.pushNamed(context, '/writ3rs');
                       Navigator.pushNamed(context, '/anaekran');
                     },
                     child: Row(
@@ -218,21 +248,6 @@ class BooksScreen extends StatelessWidget {
                     ),
                   ),
                   Gap(5),
-                  //daha sonra sileceğim writersbuton
-                  //2.menuıtem
-                  /* MenuItem(
-                      title: "Categories",
-                      icon: const Icon(
-                        Icons.book_online_outlined,
-                        size: 20,
-                        color: Colors.greenAccent,
-                      ),
-                      onTap: () {
-                        Navigator.pushNamed(context, "/kategoriler");
-                        _selectedIndex = 1;
-                      },
-                    ),*/
-                  //daha sonra sileceğim writersbuton
                   ElevatedButton(
                     onPressed: () {
                       Navigator.pushNamed(context, '/kategoriler');
@@ -344,77 +359,6 @@ class BooksScreen extends StatelessWidget {
       body: Column(
         children: [
           //1.kutu
-/*
-          Container(
-            width: double.infinity,
-            height: 60,
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Color.fromRGBO(62, 36, 17, 1),
-                  Color.fromRGBO(48, 14, 24, 1),
-                ],
-              ),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(2.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      GestureDetector(
-                        //burada botuna tıklandığında home'a döner.
-                        onTap: () {
-                          //Navigator.pushNamed( context, '/home'); // Ana menüye dönme işlemi
-                          Scaffold.of(context).openDrawer();
-                        },
-                        child: const Row(
-                          //burada image ve yazı var.
-                          children: [
-                            /*CircleAvatar(
-                              radius: 18,
-                              backgroundImage:
-                                  AssetImage("assets/images/avatar.jpg"),
-                            ),*/
-                            SizedBox(
-                              width: 15,
-                            ),
-                            // Text(
-                            //   "Books",
-                            //   style: TextStyle(
-                            //     color: Colors.white,
-                            //     fontWeight: FontWeight.bold,
-                            //     fontSize: 27,
-                            //   ),
-                            // ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      CategoryItem("Science Fiction"),
-                      CategoryItem("Mystery"),
-                      CategoryItem("Horror"),
-                      CategoryItem("Poetry"),
-                      CategoryItem("Classics"),
-                      CategoryItem("Novel"),
-                      CategoryItem("Non-fiction"),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-*/
-//
           Divider(),
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -548,50 +492,35 @@ class BooksScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-                      // const SizedBox(
-                      //   height: 40,
-                      // ),
                       const SizedBox(
                         height: 40,
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          const Text(
-                            "Popular Books",
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 255, 255, 255),
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
                           Container(
-                            padding: const EdgeInsets.only(
-                                top: 3.0,
-                                bottom: 3,
-                                right: 9,
-                                left: 9), //burası
                             decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Colors.white,
-                              ),
-                              borderRadius: BorderRadius.circular(14),
+                              color: Colors.blueGrey, // arka plan rengi
+                              borderRadius: BorderRadius.circular(
+                                  10), //köşe yuvarlaklıgi
                             ),
-                            child: const Text(
-                              " all",
+                            padding: EdgeInsets.all(
+                                10), // bosluk kbırama
+                            child: Text(
+                              "Popular Books",
                               style: TextStyle(
-                                color: Color.fromARGB(255, 187, 186, 186),
-                                fontSize: 12,
+                                color: Color.fromARGB(255, 255, 255, 255),
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
                         ],
                       ),
-
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
-                          children: bookList(),
+                          children: bookList4(),
                         ),
                       ),
                     ],
@@ -754,6 +683,54 @@ class BooksScreen extends StatelessWidget {
               ),
               const SizedBox(
                 width: 10,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    artist,
+                    style: const TextStyle(
+                      color: Color.fromARGB(255, 181, 181, 181),
+                      fontSize: 14,
+                    ),
+                  )
+                ],
+              ),
+            ],
+          ),
+          const Icon(
+            Icons.more_vert,
+            color: Colors.white,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget BookList4(String photo, String title, String artist) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        top: 35.0,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Image.asset(
+                photo,
+                width: 70,
+              ),
+              const SizedBox(
+                width: 20,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
