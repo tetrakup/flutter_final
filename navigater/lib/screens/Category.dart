@@ -37,7 +37,7 @@ class _KategorilerState extends State<Kategoriler> {
       "images/wombo24.jpg",
     ],
     "name": [
-  "Fantasy",
+  "Fantastic",
   "Novel",
   "Action",
   "Science Fiction",
@@ -45,7 +45,7 @@ class _KategorilerState extends State<Kategoriler> {
   "Young Adult Fiction",
   "Thriller",
   "Mystery",
-  "Science Fantasy",
+  "Science Fantastic",
   "Classics",
   "Horror",
   "Non-Fiction",

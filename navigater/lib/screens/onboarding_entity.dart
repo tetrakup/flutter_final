@@ -16,14 +16,14 @@ class OnBoardingEntity {
       image: "assets/images/welcome.jpg",
       title: "Yazarların İzinde",
       description:
-          "Dünya genelindeki yazarların eşsiz dünyalarını ziyaret edin. Onların hayatları ve eserleriyle tanışın!",
+          "Dünya genelindeki yazarların hayatları ve eserleriyle tanışın!",
     ),
     OnBoardingEntity(
       image: "assets/images/welcome.jpg",
 
       title: "Kategorilere Yolculuk",
       description:
-          "Farklı kategorilerdeki binlerce kitabı keşfedin. Heyecan verici kitaplar sizi bekliyor!",
+          "Farklı kategorilerdeki binlerce heyecan verisi kitabı keşfet!",
     ),
   ];
 }

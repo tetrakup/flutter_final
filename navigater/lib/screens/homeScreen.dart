@@ -3,13 +3,8 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:navigater/core/storage.dart';
-import 'package:navigater/widgets/profileItem.dart';
-
-//import '../widgets/menuItem.dart';
-//import '../widgets/profileItem.dart';
 import '../screens/Category.dart';
 import 'booksScreen.dart';
 
