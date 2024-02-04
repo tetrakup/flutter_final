@@ -2,12 +2,9 @@
 
 ## 🎯 Amaç
 
-Bu uygulama, mobil programlama dersi kapsamında geliştirilen  kitap tutkunları için tasarlanmış, kullanıcı dostu bir Flutter uygulamasıdır. Kitap okuyucularıyla yazarları bir araya getirerek, kitapları ve yazarları keşfetmelerine olanak sağlamayı hedefler. Uygulama içeriği aşağıdaki özellikleri içerir:
+Bu uygulama, **Mobil Programlama Dersi** kapsamında geliştirilen  kitap tutkunları için tasarlanmış, kullanıcı dostu bir Flutter uygulamasıdır. Kitap okuyucularıyla yazarları bir araya getirerek, kitapları ve yazarları keşfetmelerine olanak sağlamayı hedefler. Uygulama içeriği aşağıdaki özellikleri içerir:
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 6661d235b297d6ebf1ffd4ca8af19ac6fe90758e
 ## 💡 Features
 
 - 👤 **Kayıt, Giriş ve Çıkış İşlemleri:** Kullanıcılar uygulamaya kayıt olabilir, giriş yapabilir ve istedikleri zaman çıkış yapabilirler.
@@ -72,3 +69,5 @@ Katkılarınız ve geri bildirimleriniz her zaman değerlidir. Eğer bir hata bu
 ## 📋 Lisans
 
 Bu proje MIT lisansı altında lisanslanmıştır. Detaylı bilgi için [LICENSE](LICENSE) dosyasını inceleyebilirsiniz.
+
+*Katkılarından dolayı @oguzhanerbil 'e teşekkürler. *
