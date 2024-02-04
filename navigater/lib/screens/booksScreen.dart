@@ -11,7 +11,7 @@ void main() {
 class BooksScreen extends StatelessWidget {
   BooksScreen({super.key});
 
-    Map<String, dynamic> user = {
+  Map<String, dynamic> user = {
     "name": "",
     "id": -1,
     "phone_number": "",
@@ -75,13 +75,13 @@ class BooksScreen extends StatelessWidget {
       "writer": "John Steinbeck",
     },
     {
-      "photo": "assets/images/kitap9.jpg",
-      "bookName": "Outliers  ",
-      "writer": "Malcolm Gladwell",
+      "photo": "assets/images/kitap11.jpg",
+      "bookName": "Cesur Yeni Dünya",
+      "writer": "Aldous Huxley",
     },
     {
-      "photo": "assets/images/kitap10.jpg",
-      "bookName": "Fareler ve İnsan",
+      "photo": "assets/images/kitap12.jpg",
+      "bookName": "Bitmeyen Kavga",
       "writer": "John Steinbeck",
     },
   ];
@@ -123,58 +123,104 @@ class BooksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-              drawer: Drawer(
-          child: Column(
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+      appBar: AppBar(
+        actions: [
+          InkWell(
+            onTap: () => Navigator.of(context).pushNamed("/users"),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ProfileItem(
-                    avatar: 'assets/images/avatar.jpg',
-                    name: "Ceylan Atay",
-                    // onTap: () {
-                    //   Navigator.pushNamed(context, "/profile");
-                    // },
-                    onTap: () {
-                      Navigator.pushNamed(context, "/profile", arguments: user);
-                    },
+                  SvgPicture.asset(
+                    "assets/icons/team.svg",
+                    height: 20,
+                    colorFilter: const ColorFilter.mode(
+                        Colors.blueGrey, BlendMode.srcIn),
+                  ),
+                  const Text(
+                    'Readers',
+                    style: TextStyle(color: Colors.white),
                   ),
                 ],
               ),
-              Gap(5),
-              Expanded(
-                child: Column(
-                  children: [
-                    const Divider(
-                      height: 5,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        //Navigator.pushNamed(context, '/writ3rs');
-                        Navigator.pushNamed(context, '/anaekran');
-                      },
-                      child: Row(
-                        children: [
-                          SvgPicture.asset(
-                            "assets/icons/home.svg",
-                            height: 30,
-                            colorFilter: ColorFilter.mode(
-                              Colors.white60,
-                              BlendMode.srcIn,
-                            ),
+            ),
+          ),
+          //device start
+          InkWell(
+            onTap: () => Navigator.of(context).pushNamed("/devices"),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(
+                    "assets/icons/device.svg",
+                    height: 20,
+                    colorFilter: const ColorFilter.mode(
+                        Colors.blueGrey, BlendMode.srcIn),
+                  ),
+                  const Text(
+                    'System Information',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+      drawer: Drawer(
+        child: Column(
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ProfileItem(
+                  avatar: 'assets/images/avatar.jpg',
+                  name: "Ceylan Atay",
+                  // onTap: () {
+                  //   Navigator.pushNamed(context, "/profile");
+                  // },
+                  onTap: () {
+                    Navigator.pushNamed(context, "/profile", arguments: user);
+                  },
+                ),
+              ],
+            ),
+            Gap(5),
+            Expanded(
+              child: Column(
+                children: [
+                  const Divider(
+                    height: 5,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      //Navigator.pushNamed(context, '/writ3rs');
+                      Navigator.pushNamed(context, '/anaekran');
+                    },
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                          "assets/icons/home.svg",
+                          height: 30,
+                          colorFilter: ColorFilter.mode(
+                            Colors.white60,
+                            BlendMode.srcIn,
                           ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text("Home Screen"),
-                        ],
-                      ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text("Home Screen"),
+                      ],
                     ),
-                    Gap(5),
-                    //daha sonra sileceğim writersbuton
-                    //2.menuıtem
-                    /* MenuItem(
+                  ),
+                  Gap(5),
+                  //daha sonra sileceğim writersbuton
+                  //2.menuıtem
+                  /* MenuItem(
                       title: "Categories",
                       icon: const Icon(
                         Icons.book_online_outlined,
@@ -186,122 +232,122 @@ class BooksScreen extends StatelessWidget {
                         _selectedIndex = 1;
                       },
                     ),*/
-                    //daha sonra sileceğim writersbuton
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/kategoriler');
-                      },
-                      child: Row(
-                        children: [
-                          SvgPicture.asset(
-                            "assets/icons/categories.svg",
-                            height: 20,
-                            colorFilter: ColorFilter.mode(
-                              Colors.white60,
-                              BlendMode.srcIn,
-                            ),
+                  //daha sonra sileceğim writersbuton
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/kategoriler');
+                    },
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                          "assets/icons/categories.svg",
+                          height: 20,
+                          colorFilter: ColorFilter.mode(
+                            Colors.white60,
+                            BlendMode.srcIn,
                           ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text("Categories"),
-                        ],
-                      ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text("Categories"),
+                      ],
                     ),
-                    Gap(5),
-                    ElevatedButton(
-                      onPressed: () {
-                        //Navigator.pushNamed(context, '/writ3rs');
-                        Navigator.pushNamed(context, '/writers');
-                      },
-                      child: Row(
-                        children: [
-                          SvgPicture.asset(
-                            "assets/icons/writer.svg",
-                            height: 30,
-                            colorFilter: ColorFilter.mode(
-                              Colors.white60,
-                              BlendMode.srcIn,
-                            ),
+                  ),
+                  Gap(5),
+                  ElevatedButton(
+                    onPressed: () {
+                      //Navigator.pushNamed(context, '/writ3rs');
+                      Navigator.pushNamed(context, '/writers');
+                    },
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                          "assets/icons/writer.svg",
+                          height: 30,
+                          colorFilter: ColorFilter.mode(
+                            Colors.white60,
+                            BlendMode.srcIn,
                           ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text("Writers"),
-                        ],
-                      ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text("Writers"),
+                      ],
                     ),
-                    Gap(5),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/thebook');
-                      },
-                      child: Row(
-                        children: [
-                          SvgPicture.asset(
-                            "assets/icons/book.svg",
-                            height: 30,
-                            colorFilter: ColorFilter.mode(
-                              Colors.white60,
-                              BlendMode.srcIn,
-                            ),
+                  ),
+                  Gap(5),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/thebook');
+                    },
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                          "assets/icons/book.svg",
+                          height: 30,
+                          colorFilter: ColorFilter.mode(
+                            Colors.white60,
+                            BlendMode.srcIn,
                           ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text("Books"),
-                        ],
-                      ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text("Books"),
+                      ],
                     ),
-                    //books
-                    //6.menuitem logout
-                    const Divider(),
-                    ElevatedButton(
-                      onPressed: () async {
-                       // logoutErrorMaterial();
-                        //Storage storage = Storage();
-                        //await storage.clearUser();
-                        //Navigator.of(context).pushReplacementNamed("/login");
-                      },
-                      child: Row(
-                        children: [
-                          SvgPicture.asset(
-                            "assets/icons/logout.svg",
-                            height: 20,
-                            colorFilter: ColorFilter.mode(
-                              Colors.white60,
-                              BlendMode.srcIn,
-                            ),
+                  ),
+                  //books
+                  //6.menuitem logout
+                  const Divider(),
+                  ElevatedButton(
+                    onPressed: () async {
+                      // logoutErrorMaterial();
+                      //Storage storage = Storage();
+                      //await storage.clearUser();
+                      //Navigator.of(context).pushReplacementNamed("/login");
+                    },
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                          "assets/icons/logout.svg",
+                          height: 20,
+                          colorFilter: ColorFilter.mode(
+                            Colors.white60,
+                            BlendMode.srcIn,
                           ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text("Logout"),
-                        ],
-                      ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text("Logout"),
+                      ],
                     ),
-                    //elevatedbutton deneme bitis
-                  ],
-                ),
+                  ),
+                  //elevatedbutton deneme bitis
+                ],
               ),
-              const Text(
-                "Version 1.0.2",
-                style: TextStyle(
-                  color: Colors.purple,
-                  fontSize: 10,
-                ),
+            ),
+            const Text(
+              "Version 1.0.2",
+              style: TextStyle(
+                color: Colors.purple,
+                fontSize: 10,
               ),
-              const SizedBox(height: 10),
-            ],
-          ),
+            ),
+            const SizedBox(height: 10),
+          ],
         ),
-        
+      ),
       body: Column(
         children: [
           //1.kutu
+/*
           Container(
             width: double.infinity,
-            height: 120,
+            height: 60,
             decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: [
@@ -327,75 +373,25 @@ class BooksScreen extends StatelessWidget {
                         child: const Row(
                           //burada image ve yazı var.
                           children: [
-                            CircleAvatar(
+                            /*CircleAvatar(
                               radius: 18,
                               backgroundImage:
                                   AssetImage("assets/images/avatar.jpg"),
-                            ),
+                            ),*/
                             SizedBox(
                               width: 15,
                             ),
-                            Text(
-                              "Books",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 27,
-                              ),
-                            ),
+                            // Text(
+                            //   "Books",
+                            //   style: TextStyle(
+                            //     color: Colors.white,
+                            //     fontWeight: FontWeight.bold,
+                            //     fontSize: 27,
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),
-                      Row(
-                        children: [
-                          InkWell(
-                            onTap: () =>
-                                Navigator.of(context).pushNamed("/users"),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  SvgPicture.asset(
-                                    "assets/icons/team.svg",
-                                    height: 30,
-                                    colorFilter: const ColorFilter.mode(
-                                        Colors.blueGrey, BlendMode.srcIn),
-                                  ),
-                                  const Text(
-                                    'Readers',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          //device start
-                          InkWell(
-                            onTap: () =>
-                                Navigator.of(context).pushNamed("/devices"),
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  SvgPicture.asset(
-                                    "assets/icons/device.svg",
-                                    height: 25,
-                                    colorFilter: const ColorFilter.mode(
-                                        Colors.blueGrey, BlendMode.srcIn),
-                                  ),
-                                  const Text(
-                                    'System Information',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      //device finish
                     ],
                   ),
                 ),
@@ -417,7 +413,52 @@ class BooksScreen extends StatelessWidget {
               ],
             ),
           ),
+*/
+//
+          Divider(),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(2.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Scaffold.of(context).openDrawer();
+                      },
+                      child: const Row(
+                        children: [
+                          SizedBox(
+                            width: 15,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CategoryItem("Science Fiction"),
+                    CategoryItem("Mystery"),
+                    CategoryItem("Horror"),
+                    CategoryItem("Poetry"),
+                    CategoryItem("Classics"),
+                    CategoryItem("Novel"),
+                    CategoryItem("Non-fiction"),
+                  ],
+                ),
+              ),
+            ],
+          ),
+
           //2.kutu
+          Gap(5),
           Expanded(
             child: Container(
               width: double.infinity,
@@ -433,41 +474,62 @@ class BooksScreen extends StatelessWidget {
                         style: TextStyle(
                           color: Color.fromARGB(255, 187, 186, 186),
                           fontSize: 12,
+                          fontStyle: FontStyle.italic,
                         ),
                       ),
                       //2.text
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            "Favorites",
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 255, 255, 255),
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.only(
-                                top: 3.0,
-                                bottom: 5,
-                                right: 9,
-                                left: 9), //burası
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Colors.white,
-                              ),
-                              borderRadius: BorderRadius.circular(14),
-                            ),
-                            child: const Text(
-                              "see all",
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 187, 186, 186),
-                                fontSize: 12,
+                      Container(
+                        decoration: BoxDecoration(),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Row(
+                                children: [
+                                  const Text(
+                                    "Favorites",
+                                    style: TextStyle(
+                                      color: Color.fromARGB(255, 255, 255, 255),
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Gap(5),
+                                  Text("\u{2764}"),
+                                ],
                               ),
                             ),
-                          ),
-                        ],
+                            Container(
+                              padding: const EdgeInsets.only(
+                                  top: 3.0,
+                                  bottom: 5,
+                                  right: 9,
+                                  left: 9), //burası
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.white,
+                                ),
+                                borderRadius: BorderRadius.circular(14),
+                              ),
+                              child: InkWell(
+                                onTap: () =>
+                                    Navigator.of(context).pushNamed("/thebook"),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const Text(
+                                        'view all',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
@@ -486,10 +548,9 @@ class BooksScreen extends StatelessWidget {
                           ],
                         ),
                       ),
-
-                      const SizedBox(
-                        height: 40,
-                      ),
+                      // const SizedBox(
+                      //   height: 40,
+                      // ),
                       const SizedBox(
                         height: 40,
                       ),
@@ -500,7 +561,7 @@ class BooksScreen extends StatelessWidget {
                             "Popular Books",
                             style: TextStyle(
                               color: Color.fromARGB(255, 255, 255, 255),
-                              fontSize: 20,
+                              fontSize: 25,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -517,7 +578,7 @@ class BooksScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(14),
                             ),
                             child: const Text(
-                              "see all",
+                              " all",
                               style: TextStyle(
                                 color: Color.fromARGB(255, 187, 186, 186),
                                 fontSize: 12,
@@ -539,100 +600,6 @@ class BooksScreen extends StatelessWidget {
               ),
             ),
           ),
-          //3.kutu
-          /*Container(
-              width: double.infinity,
-              height: 60,
-              color: const Color.fromRGBO(33, 33, 33, 1),
-              child: const 
-               Padding(
-                padding: EdgeInsets.all(8.0),
-               child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Column(
-                      children: [
-                        Icon(
-                          Icons.home,
-                          color: Colors.white,
-                        ),
-                        Text(
-                          "Home",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 10,
-                          ),
-                        ),
-                      ],
-                    ),
-                    //2.column
-                    Column(
-                      children: [
-                        Icon(
-                          Icons.check_box,
-                          color: Colors.white,
-                        ),
-                        Text(
-                          "Completed",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 10,
-                          ),
-                        ),
-                      ],
-                    ),
-                    //3.colum
-                    Column(
-                      children: [
-                        Icon(
-                          Icons.search,
-                          color: Colors.white,
-                        ),
-                        Text(
-                          "Explorer",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 10,
-                          ),
-                        ),
-                      ],
-                    ),
-                    //4.column
-                    Column(
-                      children: [
-                        Icon(
-                          Icons.view_cozy,
-                          color: Colors.white,
-                        ),
-                        Text(
-                          "Library",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 10,
-                          ),
-                        ),
-                      ],
-                    ),
-                    //5.colmn
-                    Column(
-                      children: [
-                        Icon(
-                          Icons.download_done,
-                          color: Colors.white,
-                        ),
-                        Text(
-                          "Download",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 10,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),*/
         ],
       ),
     );

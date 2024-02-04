@@ -67,7 +67,7 @@ class _DeviceScreenState extends State<DeviceScreen> {
           child: const Text("Device Info")),
         actions: [
           InkWell(
-            onTap: () => Navigator.of(context).pushNamed("/home"),
+            onTap: () => Navigator.of(context).pushNamed("/anaekran"),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
