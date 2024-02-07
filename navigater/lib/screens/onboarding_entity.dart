@@ -7,19 +7,19 @@ class OnBoardingEntity {
 
   static List<OnBoardingEntity> onBoardingData = [
     OnBoardingEntity(
-      image: "images/books.jpg",
+      image: "books.jpg",
       title: "Kitap Dünyasına Adım Atın",
       description:
           "En popüler kitapları ve öne çıkan yazarları keşfedin! Sizi bekleyen macera dolu dünyayı keşfedin!",
     ),
     OnBoardingEntity(
-      image: "images/books2.jpg",
+      image: "books2.jpg",
       title: "Yazarların İzinde",
       description:
           "Dünya genelindeki yazarların hayatları ve eserleriyle tanışın!",
     ),
     OnBoardingEntity(
-      image: "images/books3.jpg",
+      image: "books3.jpg",
       title: "Kategorilere Yolculuk",
       description:
           "Farklı kategorilerdeki binlerce heyecan verisi kitabı keşfet!",

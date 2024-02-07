@@ -21,22 +21,24 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               margin: const EdgeInsets.symmetric(vertical: 80),
               child: Column(
                 children: [
-                  Image.asset("assets/images/logo.jpg"),
+                  // Image.asset("assets/images/logo.jpg"),
                   const SizedBox(
                     height: 40,
                   ),
-                  Image.asset("assets/${onBoardingData[index].image}"),
-                  /*Text(
-                    "${onBoardingData[index].title}",
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                        fontSize: 22, fontWeight: FontWeight.bold),
-                  ),*/
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    padding: EdgeInsets.all(10),
+                    child: Image.asset(
+                        "assets/images/${onBoardingData[index].image}"),
+                  ),
                   const SizedBox(
                     height: 40,
                   ),
                   Text(
-                    "${onBoardingData[index].title}",
+                    "images/${onBoardingData[index].title}",
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         fontSize: 22, fontWeight: FontWeight.bold),
@@ -45,7 +47,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     height: 20,
                   ),
                   Text(
-                    "${onBoardingData[index].description}",
+                    "images/${onBoardingData[index].description}",
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                         fontSize: 14,
@@ -97,7 +99,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         width: 10,
                         height: 10,
                         decoration: BoxDecoration(
-                          color: index == 0 ? Colors.grey : Colors.grey,
+                          color: index == 0 ? Colors.white : Colors.grey,
                           shape: BoxShape.circle,
                         ),
                       ),
@@ -108,7 +110,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         width: 10,
                         height: 10,
                         decoration: BoxDecoration(
-                          color: index == 1 ? Colors.grey : Colors.grey,
+                          color: index == 1 ? Colors.white : Colors.grey,
                           shape: BoxShape.circle,
                         ),
                       ),
@@ -119,7 +121,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         width: 10,
                         height: 10,
                         decoration: BoxDecoration(
-                          color: index == 2 ? Colors.grey : Colors.grey,
+                          color: index == 2 ? Colors.white : Colors.grey,
                           shape: BoxShape.circle,
                         ),
                       ),
